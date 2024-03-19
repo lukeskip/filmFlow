@@ -7,6 +7,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         poster: {
+            //Provisional
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -27,6 +28,16 @@ module.exports = (sequelize) => {
         duration: {
             type: DataTypes.FLOAT,
             allowNull: false,
+        },
+        type: {
+            //Provisional
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        country: {
+            //Provisional
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     })
 }
