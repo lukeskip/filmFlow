@@ -13,7 +13,7 @@ const FormularioPelicula = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/ruta-de-tu-endpoint', {
+      const response = await axios.post('ruta', {
         nombrePelicula,
         director,
         genero,
