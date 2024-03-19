@@ -26,18 +26,21 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         duration: {
+            //Provisional
             type: DataTypes.FLOAT,
             allowNull: false,
         },
         type: {
-            //Provisional
             type: DataTypes.STRING,
             allowNull: true,
         },
         country: {
-            //Provisional
             type: DataTypes.STRING,
             allowNull: true,
-        }
+        },
+        isActive: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
     })
 }
