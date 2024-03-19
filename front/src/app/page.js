@@ -93,6 +93,4 @@ export default function Home() {
     </main>
   );
 }
-
-
 //Prueba para el push
