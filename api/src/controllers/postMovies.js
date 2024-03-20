@@ -5,9 +5,9 @@ module.exports = async (body) => {
         const data = {}
 
         // const { name, poster, director, genre, description, duration, type, country, status, isActive} = body;
-        const { name, poster, director, genre, description, duration, type, country} = body;
+        const { name, poster, director, genre, description, duration, country} = body;
 
-        if (![name, poster, director, genre, description, duration, type, country].every(Boolean)) {
+        if (![name, poster, director, genre, description, duration, country].every(Boolean)) {
             return data.message = "Faltan datos"
         }
         const status = "pending" 
@@ -15,7 +15,7 @@ module.exports = async (body) => {
 
         const [content, created] = await Movie.findOrCreate({
             where: { name },
-            defaults: { poster, director, genre, description, duration, type, country, status, isActive },
+            defaults: { poster, director, genre, description, duration, country, status, isActive },
         })
 
         if (!created) {
