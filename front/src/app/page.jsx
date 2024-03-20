@@ -3,7 +3,7 @@ import Cards from "./cards/Cards";
 import Link from "next/link";
 import axios from "axios";
 import { useState, useEffect } from "react";
-//import FormularioPelicula from ".FormularioPelicula/FormularioPelicula"
+import FormularioPelicula from "./form/form";
 
 export default function Home() {
   const [content, setContent] = useState(
@@ -32,7 +32,7 @@ export default function Home() {
     </div>
     {/* FORM LOGIN - BANNER */}
     <div>
-      {/* <h3><FormularioPelicula /></h3> */}
+       <h3><FormularioPelicula /></h3> 
       <h3>FormularioPelicula</h3>
     </div>
     {/* CARDS */}
