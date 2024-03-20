@@ -1,53 +1,66 @@
-import { useState } from 'react';
+'use client'
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const FormularioPelicula = () => {
-  const [nombrePelicula, setNombrePelicula] = useState('');
+const MovieForm = () => {
+  const [movieName, setMovieName] = useState('');
   const [director, setDirector] = useState('');
-  const [genero, setGenero] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-  const [duracion, setDuracion] = useState('');
-  const [poster, setPoster] = useState('');
+  const [genre, setGenre] = useState('');
+  const [description, setDescription] = useState('');
+  const [duration, setDuration] = useState('');
+  const [posterUrl, setPosterUrl] = useState('');
   const [type, setType] = useState('');
   const [country, setCountry] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/ruta', {
-        name: nombrePelicula,
+      const response = await axios.post('http://localhost:3001/movies', {
+        name: movieName,
         director: director,
-        genre: genero,
-        description: descripcion,
-        duration: parseFloat(duracion),
-        poster: poster,
+        genre: genre,
+        description: description,
+        duration: parseFloat(duration),
+        poster: posterUrl, // Cambiado a posterUrl
         type: type,
         country: country,
-        isActive: isActive
+        isActive,
       });
-      
-      console.log('Respuesta del servidor:', response.data);
-      // Aquí podrías añadir lógica adicional, como mostrar un mensaje de éxito o redireccionar
+
+      setSuccessMessage('Formulario enviado correctamente');
+      setErrorMessage('');
+      console.log('Server response:', response.data);
+
     } catch (error) {
-      console.error('Error al enviar datos:', error);
-      // Manejo de errores, como mostrar un mensaje al usuario
+      setSuccessMessage('');
+      setErrorMessage('Error al enviar datos: ' + error.message);
+      console.error('Error sending data:', error);
     }
   };
 
+  const handlePosterUrlChange = (e) => {
+    setPosterUrl(e.target.value);
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="nombrePelicula">Nombre de la película:</label>
-        <input
-          type="text"
-          id="nombrePelicula"
-          value={nombrePelicula}
-          onChange={(e) => setNombrePelicula(e.target.value)}
-          required
-        />
-      </div>
+    <div>
+      {errorMessage && <p>{errorMessage}</p>}
+      {successMessage && <p>{successMessage}</p>}
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="movieName">Nombre de la Pelicula:</label>
+          <input
+            type="text"
+            id="movieName"
+            value={movieName}
+            onChange={(e) => setMovieName(e.target.value)}
+            required
+          />
+        </div>
       <div>
         <label htmlFor="director">Director:</label>
         <input
@@ -59,49 +72,54 @@ const FormularioPelicula = () => {
         />
       </div>
       <div>
-        <label htmlFor="genero">Género:</label>
+        <label htmlFor="genre">Genero:</label>
         <select
-          id="genero"
-          value={genero}
-          onChange={(e) => setGenero(e.target.value)}
+          id="genre"
+          value={genre}
+          onChange={(e) => setGenre(e.target.value)}
           required
         >
-          <option value="">Selecciona un género</option>
-          <option value="Accion">Acción</option>
-          <option value="Comedia">Comedia</option>
+          <option value="">Select a genre</option>
+          <option value="Action">Action</option>
+          <option value="Comedy">Comedy</option>
           <option value="Drama">Drama</option>
-          <option value="Ciencia Ficción">Ciencia Ficción</option>
+          <option value="Science Fiction">Ciencia Ficcion</option>
         </select>
       </div>
       <div>
-        <label htmlFor="descripcion">Breve descripción:</label>
+        <label htmlFor="description">Breve descripcion :</label>
         <textarea
-          id="descripcion"
-          value={descripcion}
-          onChange={(e) => setDescripcion(e.target.value)}
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
       </div>
       <div>
-        <label htmlFor="duracion">Duración (en horas):</label>
+        <label htmlFor="duration">Duracion (en horas):</label>
         <input
           type="number"
-          id="duracion"
-          value={duracion}
-          onChange={(e) => setDuracion(e.target.value)}
+          id="duration"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="poster">Poster (URL de la imagen):</label>
-        <input
-          type="text"
-          id="poster"
-          value={poster}
-          onChange={(e) => setPoster(e.target.value)}
-          required
-        />
-      </div>
+          <label htmlFor="posterUrl">Poster URL:</label>
+          <input
+            type="text"
+            id="posterUrl"
+            value={posterUrl}
+            onChange={handlePosterUrlChange}
+            required
+          />
+          {posterUrl && (
+            <div>
+              <img src={posterUrl} alt="Preview" style={{ maxWidth: '200px' }} />
+            </div>
+          )}
+        </div>
       <div>
         <label htmlFor="type">Tipo:</label>
         <input
@@ -113,7 +131,7 @@ const FormularioPelicula = () => {
         />
       </div>
       <div>
-        <label htmlFor="country">País:</label>
+        <label htmlFor="country">Pais:</label>
         <input
           type="text"
           id="country"
@@ -123,7 +141,7 @@ const FormularioPelicula = () => {
         />
       </div>
       <div>
-        <label htmlFor="isActive">¿Activa?:</label>
+        <label htmlFor="isActive">Activo:</label>
         <input
           type="checkbox"
           id="isActive"
@@ -131,9 +149,10 @@ const FormularioPelicula = () => {
           onChange={(e) => setIsActive(e.target.checked)}
         />
       </div>
-      <button type="submit">Enviar</button>
+      <button type="submit">Submit</button>
     </form>
+    </div>
   );
 };
 
-export default FormularioPelicula;
+export default MovieForm;
