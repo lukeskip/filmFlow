@@ -1,15 +1,15 @@
 const {Router} = require('express')
 const {movies} = require('./api')
-const postMoviesHandler = require('../handlers/postMoviesHandler')
-const getMoviesHandler = require('../handlers/getMoviesHandler')
-const putMoviesHandler = require('../handlers/putMoviesHandler')
+const moviesRouter = require('./moviesRouter')
+const genresRouter = require('./genresRouter')
+
 const router = Router()
 
 router.get('/fake', async (req, res)=>{
     res.status(200).json(movies)
 })
-router.get('/movies', getMoviesHandler)
-router.post('/movies', postMoviesHandler)
-router.put('/movies/:id', putMoviesHandler)
+router.use('/movies',moviesRouter);
+router.use('/genres',genresRouter);
+
 
 module.exports = router
