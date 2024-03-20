@@ -30,6 +30,7 @@ let capsEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capsEntries);
 
+const { Content, User} = sequelize.models;
 
 module.exports = {
   ...sequelize.models,
