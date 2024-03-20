@@ -4,15 +4,15 @@ module.exports = async function postContent (body) {
     try {
         const data = {}
 
-        const { name, poster, director, genre, description, duration, type, country} = body;
+        const { name, poster, director, genre, description, duration, type, country, isActive} = body;
 
-        if (![name, poster, director, genre, description, duration, type, country].every(Boolean)) {
+        if (![name, poster, director, genre, description, duration, type, country, isActive].every(Boolean)) {
             return data.message = "Faltan datos"
         }
 
         const [content, created] = await Content.findOrCreate({
             where: { name },
-            defaults: { poster, director, genre, description, duration, type, country },
+            defaults: { poster, director, genre, description, duration, type, country, isActive },
         })
 
         if (!created) {
