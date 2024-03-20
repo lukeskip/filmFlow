@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-    sequelize.define('Content', {
+    sequelize.define('Movie', {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -16,11 +16,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        genre: {
-            //Provisional
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,10 +24,6 @@ module.exports = (sequelize) => {
             //Provisional
             type: DataTypes.FLOAT,
             allowNull: false,
-        },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: true,
         },
         country: {
             type: DataTypes.STRING,
