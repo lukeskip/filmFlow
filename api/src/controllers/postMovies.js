@@ -1,28 +1,42 @@
-const { Movie } = require('../db')
+const { Movie,Genre } = require('../db')
 
 module.exports = async (body) => {
     try {
         const data = {}
 
         // const { name, poster, director, genre, description, duration, type, country, status, isActive} = body;
-        const { name, poster, director, genre, description, duration, country} = body;
+        let { name, poster, director, genres, description, duration, country} = body;
 
-        if (![name, poster, director, genre, description, duration, country].every(Boolean)) {
+        if (![name, poster, director, genres, description, duration, country].every(Boolean)) {
             return data.message = "Faltan datos"
         }
         const status = "pending" 
         const isActive = true
 
-        const [content, created] = await Movie.findOrCreate({
+        const [movie, created] = await Movie.findOrCreate({
             where: { name },
-            defaults: { poster, director, genre, description, duration, country, status, isActive },
-        })
+            defaults: { poster, director, description, duration, country, status, isActive },
+        });
+
+        
+        if(created){
+            genres = genres.split(',').map((item) => item.trim());
+            for (genre of genres) {
+                const genreDB = await Genre.findOne({
+                  where: { name: genre },
+                });
+                
+                if(genreDB){
+                    movie.addGenre(genreDB);
+                }
+            }
+        }
 
         if (!created) {
             return data.message = "Ya hay una pelicula con ese nombre"
         }
 
-        return data.content = content
+        return data.movie = movie
     } catch (error) {
         return error
     }
