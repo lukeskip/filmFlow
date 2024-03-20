@@ -14,7 +14,7 @@ export default function Home() {
   )
   useEffect(() => {
     const getMovies = async() => {
-      let { data } = await axios.get('http://localhost:3001/movies')
+      let { data } = await axios.get('http://localhost:3001/fake')
       setContent(data)
     }
     getMovies()
