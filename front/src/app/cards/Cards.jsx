@@ -3,12 +3,12 @@
 
 const Cards = ({values}) => {
     return (
-        <div>
+        <div className="container">
             {
                 values.map((elem, i) => {
                     return(
-                        <div key={i}>
-                            <div>
+                        <div>
+                            <div key={i}>
                                 <br />
                                 <p>Id: {elem.id}</p>
                                 <p >Name: {elem.title}</p>
