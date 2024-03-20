@@ -4,14 +4,15 @@
 const Cards = ({values}) => {
     return (
         <div>
-            
             {
                 values.map((elem, i) => {
                     return(
                         <div key={i}>
                             <div>
-                                <p>Mostrando cards</p>
-                                <p >Elemento: {elem}</p>
+                                <br />
+                                <p>Id: {elem.id}</p>
+                                <p >Name: {elem.title}</p>
+                                <br />
                             </div>
                         </div>
                     )}

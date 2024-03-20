@@ -2,17 +2,24 @@
 import Cards from "./cards/Cards";
 import Link from "next/link";
 import axios from "axios";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import FormularioPelicula from "./form/form";
 
 export default function Home() {
-  //TODO: SOLICITAR AL BACK
-  let dataCards = [0, 1, 2, 3, 4, 5, 6]
+  const [content, setContent] = useState(
+    [{
+      id: 'cargando',
+      title: 'cargando'
+    }]
+  )
   useEffect(() => {
-    const { data } = axios.get('http://localhost:3001/movies')
-    data ? dataCards = data : null;
-    console.log(data);
+    const getMovies = async() => {
+      let { data } = await axios.get('http://localhost:3001/movies')
+      setContent(data)
+    }
+    getMovies()
   },[]);
+
   return (
   <div>
     {/* HEADER */}
@@ -25,12 +32,12 @@ export default function Home() {
     </div>
     {/* FORM LOGIN - BANNER */}
     <div>
-      <h3><FormularioPelicula /></h3>
+       <h3><FormularioPelicula /></h3> 
       <h3>FormularioPelicula</h3>
     </div>
     {/* CARDS */}
     <div>
-      <h4><Link href='/'><Cards key={dataCards} values={dataCards} /></Link></h4>
+      <h4><Link href='/'><Cards key={content.id} values={content} /></Link></h4>
     </div>
   </div>
   );
