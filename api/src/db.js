@@ -2,10 +2,14 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST,DB_NAME } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  {
+    logging: true,
+    native: false,
+  }
 );
 
 const basename = path.basename(__filename);
@@ -29,7 +33,12 @@ let capsEntries = entries.map((entry) => [
 ]);
 
 sequelize.models = Object.fromEntries(capsEntries);
+const { User, Movie, Genre } = sequelize.models;
 
+Movie.belongsToMany(Genre, {
+  through: "movie_genre",
+});
+Genre.belongsToMany(Movie, { through: "movie_genre" });
 
 module.exports = {
   ...sequelize.models,

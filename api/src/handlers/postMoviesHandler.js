@@ -1,10 +1,10 @@
-const postContent = require("../controllers/postContent")
+const postMovies = require("../controllers/postMovies")
 
-module.exports = postContentHandler = async (req, res) => {
+module.exports = async (req, res) => {
     try {
         const body = req.body
 
-        const data = await postContent(body)
+        const data = await postMovies(body)
 
         if (data.message) {
             return res.status(404).json({ message: data.message})

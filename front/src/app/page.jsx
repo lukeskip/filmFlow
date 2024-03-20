@@ -5,7 +5,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import FormularioPelicula from "./form/form";
 
+
 export default function Home() {
+  const URL = process.env.NEXT_PUBLIC_URL
   const [content, setContent] = useState(
     [{
       id: 'cargando',
@@ -14,7 +16,7 @@ export default function Home() {
   )
   useEffect(() => {
     const getMovies = async() => {
-      let { data } = await axios.get('http://localhost:3001/movies')
+      let { data } = await axios.get(`${URL}fake`)
       setContent(data)
     }
     getMovies()
@@ -23,21 +25,45 @@ export default function Home() {
   return (
   <div>
     {/* HEADER */}
-    <div> 
-      <h1>FilmFlow</h1>
+    <div className="container">
+      {/* TITLE */}
+      <div> 
+        <h1>FilmFlow</h1>
+      </div>
+      {/* SEARCHBAR */}
+      <div>
+        <h2>SearchBar</h2>
+      </div>
+      <div>
+        <h2>UserInfo</h2>
+      </div>
     </div>
-    {/* SEARCHBAR */}
-    <div>
-      <h2>SearchBar</h2>
-    </div>
-    {/* FORM LOGIN - BANNER */}
+    {/* CARROUSEL */}
     <div>
        <h3><FormularioPelicula /></h3> 
-      <h3>FormularioPelicula</h3>
     </div>
-    {/* CARDS */}
+    {/* FILTROS RÁPIDOS */}
     <div>
-      <h4><Link href='/'><Cards key={content.id} values={content} /></Link></h4>
+       <h3>Section filters</h3> 
+    </div>
+    {/* COLLECTIONS */}
+    <div>
+      <div>
+        <h3>Novedades</h3>
+        <h4><Link href='/'><Cards key={content.id} values={content} /></Link></h4>
+        <h5>Ver más..</h5>
+      </div>
+      <div>
+        <h3>Novedades</h3>
+        <h4><Link href='/'><Cards key={content.id} values={content} /></Link></h4>
+        <h5>Ver más..</h5>
+      </div>
+    </div>
+    {/* FOOTER */}
+    <div>
+      <div>
+        <h4>FOOTER</h4>
+      </div>
     </div>
   </div>
   );
