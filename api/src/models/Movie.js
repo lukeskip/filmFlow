@@ -30,10 +30,6 @@ module.exports = (sequelize) => {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
         country: {
             type: DataTypes.STRING,
             allowNull: true,
