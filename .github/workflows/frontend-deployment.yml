@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - deploy
-name: 🚀 Deploy website on push
+name: 🚀 Deploy frontend on push
 
 jobs:
   deployment:
@@ -23,7 +23,7 @@ jobs:
           npm install
           npm run build
         env:
-          VITE_URL_HOST: ${{ secrets.VITE_URL_HOST }}
+          NEXT_PUBLIC_URL: ${{ secrets.NEXT_PUBLIC_URL }}
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
