@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 const Home = () => {
   const URL = process.env.NEXT_PUBLIC_URL
+  console.log(URL);
   const [movie, setMovie] = useState(
     [{
       id: 'cargando',
