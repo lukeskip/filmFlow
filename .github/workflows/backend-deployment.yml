@@ -35,4 +35,4 @@ jobs:
           username: ${{ secrets.GIT_CPANEL_BACK_USER }}
           password: ${{ secrets.GIT_CPANEL_BACK_PWD }}
           protocol: ${{ secrets.GIT_CPANEL_BACK_PROTOCOL }}
-          local-dir: ./api
+          local-dir: ./api/
