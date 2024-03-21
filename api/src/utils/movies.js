@@ -15,7 +15,7 @@ const sampleMovies = [
         description: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
         duration: 136, // duración en minutos
         country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/hEpWvX6Bp79eLxY1kX5ZZJcme5U.jpg"
+        poster: "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg"
     },
     {
         name: "Forrest Gump",
@@ -24,7 +24,7 @@ const sampleMovies = [
         description: "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
         duration: 142, // duración en minutos
         country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/yE5d3BUhE8hCnkMUJOo1QDoOGNz.jpg"
+        poster: "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg"
     },
     {
         name: "The Lord of the Rings: The Fellowship of the Ring",
@@ -42,25 +42,7 @@ const sampleMovies = [
         description: "In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same.",
         duration: 153, // duración en minutos
         country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/ai0LXkzVM3hMjDhvFdKMUemoBe.jpg"
-    },
-    {
-        name: "The Silence of the Lambs",
-        director: "Jonathan Demme",
-        genres: "Crime, Drama, Thriller",
-        description: "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
-        duration: 118,
-        country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/9rjiflzhKM9gt3l7P0RRO4KGWUi.jpg"
-    },
-    {
-        name: "The Shining",
-        director: "Stanley Kubrick",
-        genres: "Drama, Horror",
-        description: "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
-        duration: 146,
-        country: "United Kingdom",
-        poster: "https://image.tmdb.org/t/p/original/9fgh3Ns1iRzlQNYuJyK0ARQZmFc.jpg"
+        poster: "https://upload.wikimedia.org/wikipedia/en/c/c3/Inglourious_Basterds_poster.jpg"
     },
     {
         name: "The Green Mile",
@@ -70,24 +52,6 @@ const sampleMovies = [
         duration: 189,
         country: "United States",
         poster: "https://image.tmdb.org/t/p/original/velWPhVMQeQKcxggNEU8YmIo52R.jpg"
-    },
-    {
-        name: "The Departed",
-        director: "Martin Scorsese",
-        genres: "Crime, Drama, Thriller",
-        description: "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
-        duration: 151,
-        country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/tGLO9zw5ZtCeyyEWgbYGgsFxC6i.jpg"
-    },
-    {
-        name: "Goodfellas",
-        director: "Martin Scorsese",
-        genres: "Biography, Crime, Drama",
-        description: "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
-        duration: 145,
-        country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/4G8f8zpx2jhV42Lj9JfGHlVrKpz.jpg"
     },
     {
         name: "The Godfather: Part II",
@@ -108,32 +72,167 @@ const sampleMovies = [
         poster: "https://image.tmdb.org/t/p/original/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg"
     },
     {
-        name: "The Usual Suspects",
-        director: "Bryan Singer",
-        genres: "Crime, Drama, Mystery",
-        description: "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.",
-        duration: 106,
+        name: "The Lion King",
+        director: "Roger Allers, Rob Minkoff",
+        genres: "Animation, Adventure, Drama",
+        description: "Lion cub and future king Simba searches for his identity. His eagerness to please others and penchant for testing his boundaries sometimes gets him into trouble.",
+        duration: 89,
         country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/jgJoRWltoS17nD5MAQ1yK2Ztefw.jpg"
+        poster: "https://image.tmdb.org/t/p/original/2CAL2433ZeIihfX1Hb2139CX0pW.jpg"
     },
     {
-        name: "The Prestige",
+        name: "The Dark Knight",
         director: "Christopher Nolan",
-        genres: "Drama, Mystery, Sci-Fi",
-        description: "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
-        duration: 130,
-        country: "United Kingdom",
-        poster: "https://image.tmdb.org/t/p/original/5MXyQfz8xUP3dIFPTubhTsbFY6N.jpg"
+        genres: "Action, Crime, Drama",
+        description: "When the menace known as The Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+        duration: 152,
+        country: "United States",
+        poster: "https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
     },
     {
-        name: "American History X",
-        director: "Tony Kaye",
-        genres: "Drama",
-        description: "A former neo-nazi skinhead tries to prevent his younger brother from going down the same wrong path that he did.",
-        duration: 119,
+        name: "Inception",
+        director: "Christopher Nolan",
+        genres: "Action, Adventure, Science Fiction",
+        description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+        duration: 148,
         country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/fXepRAYOx1qC3wju7XdDGx60775.jpg"
+        poster: "https://image.tmdb.org/t/p/original/s3TBrRGB1iav7gFOCNx3H31MoES.jpg"
     },
+    {
+        name: "Toy Story",
+        director: "John Lasseter",
+        genres: "Animation, Adventure, Comedy",
+        description: "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+        duration: 81,
+        country: "United States",
+        poster: "https://image.tmdb.org/t/p/original/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+    },
+    {
+        name: "The Godfather",
+        director: "Francis Ford Coppola",
+        genres: "Crime, Drama",
+        description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+        duration: 175,
+        country: "United States",
+        poster: "https://image.tmdb.org/t/p/original/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+    },
+    {
+        name: "Avatar",
+        director: "James Cameron",
+        genres: "Action, Adventure, Fantasy",
+        description: "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+        duration: 162,
+        country: "United States",
+        poster: "https://image.tmdb.org/t/p/original/6EiRUJpuoeQPghrs3YNktfnqOVh.jpg"
+    },
+    {
+        name: "Interstellar",
+        director: "Christopher Nolan",
+        genres: "Adventure, Drama, Sci-Fi",
+        description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+        duration: 169,
+        country: "United States",
+        poster: "https://image.tmdb.org/t/p/original/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+    },
+    {
+        name: "Ratatouille",
+        director: "Brad Bird",
+        genres: "Animation, Comedy, Family",
+        description: "A rat who can cook makes an unusual alliance with a young kitchen worker at a famous restaurant.",
+        duration: 111,
+        country: "United States",
+        poster: "https://image.tmdb.org/t/p/original/y89kFMNYXNKMdlZjR2yg7nQtcQH.jpg"
+    },
+    {
+        name: "Amélie",
+        director: "Jean-Pierre Jeunet",
+        genres: "Comedy, Romance",
+        description: "Amélie is an innocent and naive girl in Paris with her own sense of justice. She decides to help those around her and, along the way, discovers love.",
+        duration: 122,
+        country: "France",
+        poster: "https://image.tmdb.org/t/p/original/2TeJfUZMGolfDdW6DKhfIWqvq8y.jpg"
+    },
+    {
+        name: "The Shawshank Redemption",
+        director: "Frank Darabont",
+        genres: "Drama",
+        description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        duration: 142,
+        country: "United States",
+        poster: "https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
+    },
+    {
+        name: "Fight Club",
+        director: "David Fincher",
+        genres: "Drama",
+        description: "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+        duration: 139,
+        country: "United States",
+        poster: "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg"
+    },
+    {
+        name: "The Silence of the Lambs",
+        director: "Jonathan Demme",
+        genres: "Crime, Drama, Thriller",
+        description: "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
+        duration: 118,
+        country: "United States",
+        poster: "https://upload.wikimedia.org/wikipedia/en/8/86/The_Silence_of_the_Lambs_poster.jpg"
+    },
+    {
+        name: "Goodfellas",
+        director: "Martin Scorsese",
+        genres: "Biography, Crime, Drama",
+        description: "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
+        duration: 146,
+        country: "United States",
+        poster: "https://cdn.pixabay.com/photo/2015/07/10/17/10/stripes-839866_960_720.jpg"
+    },
+    {
+        name: "The Departed",
+        director: "Martin Scorsese",
+        genres: "Crime, Drama, Thriller",
+        description: "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+        duration: 151,
+        country: "United States",
+        poster: "https://cdn.pixabay.com/photo/2018/02/21/11/57/paris-3178817_960_720.jpg"
+    },
+    {
+        name: "City of God",
+        director: "Fernando Meirelles, Kátia Lund",
+        genres: "Crime, Drama",
+        description: "In the slums of Rio, two kids' paths diverge as one struggles to become a photographer and the other a kingpin.",
+        duration: 130,
+        country: "Brazil",
+        poster: "https://cdn.pixabay.com/photo/2015/05/15/14/21/architecture-768432_960_720.jpg"
+    },
+    {
+        name: "The Godfather: Part III",
+        director: "Francis Ford Coppola",
+        genres: "Crime, Drama",
+        description: "In the midst of trying to legitimize his business dealings in 1979 New York and Italy, aging mafia don Michael Corleone seeks to avow for his sins, while taking a young protégé under his wing.",
+        duration: 162,
+        country: "United States",
+        poster: "https://upload.wikimedia.org/wikipedia/en/5/53/Godfather_Part_III.jpg"
+    },
+    {
+        name: "The Shawshank Redemption",
+        director: "Frank Darabont",
+        genres: "Drama",
+        description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        duration: 142,
+        country: "United States",
+        poster: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg"
+    },
+    {
+        name: "Pirates of the Caribbean: The Curse of the Black Pearl",
+        director: "Gore Verbinski",
+        genres: "Action, Adventure, Fantasy",
+        description: "Blacksmith Will Turner teams up with eccentric pirate 'Captain' Jack Sparrow to save his love, the governor's daughter, from Jack's former pirate allies, who are now undead.",
+        duration: 143,
+        country: "United States",
+        poster: "https://upload.wikimedia.org/wikipedia/en/0/0e/Pirates_of_the_Caribbean_poster.jpg"
+    }
 ];
 
 module.exports = sampleMovies;
