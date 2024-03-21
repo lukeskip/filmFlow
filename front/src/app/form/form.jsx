@@ -9,9 +9,7 @@ const MovieForm = () => {
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState('');
   const [posterUrl, setPosterUrl] = useState('');
-  const [type, setType] = useState('');
   const [country, setCountry] = useState('');
-  const [isActive, setIsActive] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -26,9 +24,7 @@ const MovieForm = () => {
         description: description,
         duration: parseFloat(duration),
         poster: posterUrl, // Cambiado a posterUrl
-        type: type,
         country: country,
-        isActive,
       });
 
       setSuccessMessage('Formulario enviado correctamente');
@@ -120,16 +116,7 @@ const MovieForm = () => {
             </div>
           )}
         </div>
-      <div>
-        <label htmlFor="type">Tipo:</label>
-        <input
-          type="text"
-          id="type"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          required
-        />
-      </div>
+
       <div>
         <label htmlFor="country">Pais:</label>
         <input
@@ -138,15 +125,6 @@ const MovieForm = () => {
           value={country}
           onChange={(e) => setCountry(e.target.value)}
           required
-        />
-      </div>
-      <div>
-        <label htmlFor="isActive">Activo:</label>
-        <input
-          type="checkbox"
-          id="isActive"
-          checked={isActive}
-          onChange={(e) => setIsActive(e.target.checked)}
         />
       </div>
       <button type="submit">Submit</button>

@@ -3,7 +3,8 @@ import Cards from "./cards/Cards";
 import Link from "next/link";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import FormularioPelicula from "./form/form";
+import MovieForm from "./form/form";
+
 
 
 export default function Home() {
@@ -16,7 +17,8 @@ export default function Home() {
   )
   useEffect(() => {
     const getMovies = async() => {
-      let { data } = await axios.get(`${URL}fake`)
+      // let { data } = await axios.get({URL})
+      let { data } = await axios.get('http://localhost:3001/movies')
       setContent(data)
     }
     getMovies()
@@ -40,7 +42,7 @@ export default function Home() {
     </div>
     {/* CARROUSEL */}
     <div>
-       <h3><FormularioPelicula /></h3> 
+       <h3><MovieForm /></h3> 
     </div>
     {/* FILTROS RÁPIDOS */}
     <div>
