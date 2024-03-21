@@ -1,13 +1,10 @@
 'use client'
-import style from "./page.module.css"
-import { useRouter } from "next/navigation";
 import axios from "axios";
-import Movies from "./movies/Movies";
-import Carousel from "./carousel/Carousel";
+import Movies from "../movies/Movies";
+import Carousel from "../carousel/Carousel";
 import { useState, useEffect } from "react";
 
-const Landing = () => {
-  const router = useRouter();
+const Home = () => {
   const URL = process.env.NEXT_PUBLIC_URL
   const [movie, setMovie] = useState(
     [{
@@ -17,15 +14,15 @@ const Landing = () => {
   )
   useEffect(() => {
     const getMovies = async() => {
-      // let { data } = await axios.get({URL})
-      let { data } = await axios.get('http://localhost:3001/movies')
-      setContent(data)
-
+      let { data } = await axios.get(`${URL}fake`)
+      setMovie(data)
     }
     getMovies()
   },[]);
 
-  return(
+  return (
+  <div>
+    {/* HEADER */}
     <div className="container">
       {/* TITLE */}
       <div> 
@@ -40,16 +37,25 @@ const Landing = () => {
       </div>
     </div>
     {/* CARROUSEL */}
-    <div>
-    <Link href="/form">
-            <button>Ir a Formulario</button>
-        </Link>
-    </div>
+    <Carousel movie={movie}/>
     {/* FILTROS RÁPIDOS */}
     <div>
-       <h3>Section filters</h3> 
+      <h3>Section filters</h3> 
     </div>
     {/* COLLECTIONS */}
     <div>
+      <h3>Novedades</h3>
+      <Movies movie={movie} />
+      <h5>Ver más..</h5>
+    </div>
+    {/* FOOTER */}
+    <div>
+      <div>
+        <h4>FOOTER</h4>
+      </div>
+    </div>
+  </div>
+  );
+}
 
-export default Landing;
+export default Home;
