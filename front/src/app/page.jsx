@@ -1,5 +1,4 @@
 'use client'
-import style from "./page.module.css"
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Movies from "./movies/Movies";
@@ -17,39 +16,24 @@ const Landing = () => {
   )
   useEffect(() => {
     const getMovies = async() => {
-      // let { data } = await axios.get({URL})
-      let { data } = await axios.get('http://localhost:3001/movies')
-      setContent(data)
-
+      let { data } = await axios.get(`${URL}movies`)
+      setMovie(data)
     }
     getMovies()
   },[]);
 
-  return(
+  return (
     <div className="container">
-      {/* TITLE */}
-      <div> 
-        <h1>FilmFlow</h1>
-      </div>
-      {/* SEARCHBAR */}
       <div>
-        <h2>SearchBar</h2>
+        <h1>Landing</h1>
+          <Carousel movie={movie}/>
+          <button onClick={()=>router.push('/home')}>Ingresar</button>
       </div>
       <div>
-        <h2>UserInfo</h2>
+        <p>Reemplazar esta linea por COMP LOGIN</p>
       </div>
     </div>
-    {/* CARROUSEL */}
-    <div>
-    <Link href="/form">
-            <button>Ir a Formulario</button>
-        </Link>
-    </div>
-    {/* FILTROS RÁPIDOS */}
-    <div>
-       <h3>Section filters</h3> 
-    </div>
-    {/* COLLECTIONS */}
-    <div>
+    )
+}
 
-export default Landing;
+  export default Landing;
