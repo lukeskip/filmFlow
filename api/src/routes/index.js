@@ -9,7 +9,7 @@ router.get('/fake', async (req, res)=>{
     res.status(200).json(movies)
 })
 router.get('/', async (req, res)=>{
-    res.status(200).json({"movies":"hola"})
+    res.status(200).json({"message":"welcome"})
 })
 router.use('/movies',moviesRouter);
 router.use('/genres',genresRouter);
