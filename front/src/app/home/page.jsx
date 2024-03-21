@@ -7,7 +7,6 @@ import Link from 'next/link';
 
 const Home = () => {
   const URL = process.env.NEXT_PUBLIC_URL
-  console.log(URL);
   const [movie, setMovie] = useState(
     [{
       id: 'cargando',
@@ -19,6 +18,7 @@ const Home = () => {
       let { data } = await axios.get(`${URL}fake`)
       setMovie(data)
     }
+
     getMovies()
   },[]);
 
