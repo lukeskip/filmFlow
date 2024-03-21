@@ -22,7 +22,6 @@ jobs:
         run: |
           cd api
           npm install
-
         env:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -36,4 +35,4 @@ jobs:
           username: ${{ secrets.GIT_CPANEL_BACK_USER }}
           password: ${{ secrets.GIT_CPANEL_BACK_PWD }}
           protocol: ${{ secrets.GIT_CPANEL_BACK_PROTOCOL }}
-          local-dir: ./
+          local-dir: ./api
