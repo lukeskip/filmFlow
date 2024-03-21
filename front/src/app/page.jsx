@@ -3,9 +3,6 @@ import Cards from "./cards/Cards";
 import Link from "next/link";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import MovieForm from "./form/page";
-
-
 
 export default function Home() {
   const URL = process.env.NEXT_PUBLIC_URL
@@ -72,3 +69,4 @@ export default function Home() {
   </div>
   );
 }
+ 
