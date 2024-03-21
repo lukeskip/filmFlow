@@ -11,3 +11,9 @@ const DetailContent = () => {
 }
 
 export default DetailContent;
+
+/*
+const detail = (props) => {
+    const {id} = props.params
+}
+*/
