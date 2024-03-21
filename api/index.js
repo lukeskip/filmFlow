@@ -7,8 +7,11 @@ const saveUsers = require("./src/services/saveUsersToDb.js")
 const { TEST } = process.env;
 const router = require('./src/routes/index.js');
 const expressListRoutes = require('express-list-routes');
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
+console.log(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME);
 conn.sync({ force: TEST === "TRUE" ?true : false }).then(() => {
+  
   server.listen(3001, async () => {
     try {
       expressListRoutes(router);

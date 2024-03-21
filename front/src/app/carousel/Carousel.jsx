@@ -5,6 +5,7 @@ import Movie from "../movie/Movie";
 const Carousel = ({ movie }) => {
     const [movieIndex, setMovieIndex] = useState(0);
     const [arrMovie, setArrMovie] = useState(movie);
+    const URL = process.env.NEXT_PUBLIC_URL
     useEffect(() => {
         setArrMovie(movie)
     }, [movie]);

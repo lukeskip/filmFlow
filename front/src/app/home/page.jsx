@@ -18,6 +18,7 @@ const Home = () => {
       let { data } = await axios.get(`${URL}fake`)
       setMovie(data)
     }
+
     getMovies()
   },[]);
 
