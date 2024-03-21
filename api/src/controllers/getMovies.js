@@ -36,6 +36,16 @@ module.exports = async function getMovies(query){
                 },
             }
         }
+
+
+        if(orderType){    
+            options = {
+                ...options,
+                order: [
+                    [orderType, order] // Cambia 'fieldName' al nombre del campo por el que deseas ordenar
+                  ]
+            }
+        }
         
         const movies = await Movie.findAll({...options,attributes: ['id','name',"poster","director","description","duration","country","status"]})
 
