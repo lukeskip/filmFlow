@@ -8,7 +8,6 @@ const Carousel = ({ movie }) => {
     const URL = process.env.NEXT_PUBLIC_URL
     useEffect(() => {
         setArrMovie(movie)
-        console.log("hola!",URL); 
     }, [movie]);
     console.log(movie);
     const changeMovie = (direct) => {
