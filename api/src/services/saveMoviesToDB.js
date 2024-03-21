@@ -15,8 +15,7 @@ module.exports = async () => {
                     duration,
                     country,
                     poster,
-                    status: "pending",
-                    isActive: true,
+                    status: "pending"
                 }
             });
 

@@ -33,12 +33,13 @@ let capsEntries = entries.map((entry) => [
 ]);
 
 sequelize.models = Object.fromEntries(capsEntries);
-const { User, Movie, Genre } = sequelize.models;
+const { User, Movie, Genre, Reviews } = sequelize.models;
 
-Movie.belongsToMany(Genre, {
-  through: "movie_genre",
-});
+Movie.belongsToMany(Genre, { through: "movie_genre" });
 Genre.belongsToMany(Movie, { through: "movie_genre" });
+
+Movie.belongsToMany(User, { through: Reviews })
+User.belongsToMany(Movie, { through: Reviews })
 
 module.exports = {
   ...sequelize.models,
