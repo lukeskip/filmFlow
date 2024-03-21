@@ -1,5 +1,4 @@
 'use client'
-import Link from "next/link";
 import axios from "axios";
 import Movies from "../movies/Movies";
 import Carousel from "../carousel/Carousel";
@@ -38,20 +37,16 @@ const Home = () => {
       </div>
     </div>
     {/* CARROUSEL */}
-    <div>
-      <Carousel movie={movie}/>
-    </div>
+    <Carousel movie={movie}/>
     {/* FILTROS RÁPIDOS */}
     <div>
       <h3>Section filters</h3> 
     </div>
     {/* COLLECTIONS */}
     <div>
-      <div>
-        <h3>Novedades</h3>
-        <h4><Link href='/'><Movies movie={movie} /></Link></h4>
-        <h5>Ver más..</h5>
-      </div>
+      <h3>Novedades</h3>
+      <Movies movie={movie} />
+      <h5>Ver más..</h5>
     </div>
     {/* FOOTER */}
     <div>

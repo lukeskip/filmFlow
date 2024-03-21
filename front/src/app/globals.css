@@ -5,29 +5,28 @@ html{
   margin: 0;
 }
 
-div{
+/* div{
   border: 1px solid black;
-}
+} */
+
 .container{
   display: flex;
   flex-flow:row wrap;
+  flex-wrap: nowrap;
   justify-content:space-around;
-  justify-items: stretch;
+  justify-items: center;
   align-content: center;
   align-items: center;
   text-align: center;
   height: 100%;
 }
-.carousel {
-  display: flex;
-  flex-flow:row wrap;
-  justify-content:space-around;
-  justify-items: stretch;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
+
+.containerCarousel{
+  flex-wrap: nowrap;
+  margin: 10px;
+  overflow: hidden;
 }
+
 @media only screen and (max-width: 450px){
 
   .container{
@@ -40,18 +39,8 @@ div{
     align-items: center;
     font-size: 0.75em;
   }
-}
 
-ul,
-li {
-  list-style: none;
-  white-space: nowrap;
-}
-
-li {
-  display: inline;
-}
-
-img {
-  margin-top: -16px;
+  .containerCarousel{
+    flex-direction: row;
+  }
 }

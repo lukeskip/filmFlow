@@ -25,7 +25,7 @@ const Landing = () => {
 
   return(
     <div className="container">
-      <div className={style.landing}>
+      <div>
         <h1>Landing</h1>
         <Carousel movie={movie}/>
         <button onClick={()=>router.push('/home')}>Ingresar</button>

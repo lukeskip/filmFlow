@@ -25,14 +25,14 @@ const Carousel = ({ movie }) => {
     }
 
     return (
-        <div className={style.mainContainer}>
-                <div className={style.containerImages}>
-                    {
-                        <Movie key={arrMovie[movieIndex].id} elem={arrMovie[movieIndex]}/>
-                    }
-                    <div className={style.leftArrow} onClick={() => changeMovie('prev')}>&#10092;</div>
-                    <div className={style.rightArrow} onClick={() => changeMovie('next')}>&#10093;</div>
-                </div>
+        <div className="container">
+            <div className={style.mainContainer}>                
+                {
+                    <Movie key={arrMovie[movieIndex].id} elem={arrMovie[movieIndex]}/>
+                }
+                <div className={style.leftArrow} onClick={() => changeMovie('prev')}>&#10092;</div>
+                <div className={style.rightArrow} onClick={() => changeMovie('next')}>&#10093;</div>                
+            </div>
         </div>
     )
 }
