@@ -20,6 +20,7 @@ jobs:
 
       - name: 🔨 Build Project
         run: |
+          cd api
           npm install
 
         env:

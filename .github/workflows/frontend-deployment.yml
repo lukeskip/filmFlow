@@ -19,6 +19,7 @@ jobs:
 
       - name: 🔨 Build Project
         run: |
+          cd front
           npm install
           npm run build
         env:
