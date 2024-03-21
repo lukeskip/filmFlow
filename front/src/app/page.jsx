@@ -3,7 +3,7 @@ import Cards from "./cards/Cards";
 import Link from "next/link";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import MovieForm from "./form/form";
+import MovieForm from "./form/page";
 
 
 
@@ -42,7 +42,9 @@ export default function Home() {
     </div>
     {/* CARROUSEL */}
     <div>
-       <h3><MovieForm /></h3> 
+    <Link href="/form">
+            <button>Ir a Formulario</button>
+        </Link>
     </div>
     {/* FILTROS RÁPIDOS */}
     <div>
