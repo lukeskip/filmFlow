@@ -31,11 +31,12 @@ module.exports = (sequelize) => {
         },
         status: {
             type: DataTypes.ENUM('approved', 'pending', 'declined'),
-            allowNull: false,
+            allowNull: true,
         },
         isActive: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-    })
+    },
+    {paranoid : true})
 }
