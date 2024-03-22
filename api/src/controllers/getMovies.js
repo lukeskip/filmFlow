@@ -31,7 +31,7 @@ module.exports = async function getMovies(query){
                 ...options.include,
                 where: { 
                     name: { 
-                      [Op.or]: genre // Filtra por uno o más géneros
+                      [Op.or]: genre 
                     }
                 },
             }
@@ -42,8 +42,8 @@ module.exports = async function getMovies(query){
             options = {
                 ...options,
                 order: [
-                    [orderType, order] // Cambia 'fieldName' al nombre del campo por el que deseas ordenar
-                  ]
+                    [orderType, order]
+                ]
             }
         }
         
