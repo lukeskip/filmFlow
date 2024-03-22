@@ -1,18 +1,16 @@
 'use client'
-import { useParams } from 'next/navigation'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Movies from '@/app/movies/Movies'
 
-const Filters = () => {
+const FiltersView = () => {
     const URL = process.env.NEXT_PUBLIC_URL
-    const params = useParams()
-    let URL2 = URL + `movies?genre=${params.genre}`
+    let URL2 = URL + `movies?`
     const [urlFilter, setUrlFilter] = useState([URL2])
     const [movies, setMovies] = useState(
         [{
             id: 'cargando',
-            title: 'cargando'
+            name: 'cargando'
         }]
     )
     const [genres, setGenres] = useState(
@@ -37,9 +35,10 @@ const Filters = () => {
     },[]);
     useEffect(() => {
         const getMovies = async() => {
-            console.log(urlFilter);
             let { data } = await axios.get(urlFilter)
-            setMovies(data)
+            console.log(data);
+            if(data !== "No hay Peliculas") return setMovies(data)
+            setMovies([{id: 0, name: "Not Found"}])
         }
         getMovies()
     },[urlFilter]);
@@ -57,12 +56,10 @@ const Filters = () => {
     }
 
     const applyFilter = () => {
-        console.log(URL2);
         URL2 = URL + `movies?search=${dataFilter.search}`
         if(dataFilter.genre !== '') URL2 = URL2 + `&genre=${dataFilter.genre}`
         if(dataFilter.orderType !== '') URL2 = URL2 + `&orderType=${dataFilter.orderType}`
         if(dataFilter.order !== '') URL2 = URL2 + `&order=${dataFilter.order}`
-        console.log(URL2);
         setUrlFilter(URL2)
     }
 
@@ -96,7 +93,7 @@ const Filters = () => {
                         </div>
                         <div>
                             <label>OrderType:</label>
-                            <select name='order' value={dataFilter.orderType} onChange={handleChange}>
+                            <select name='orderType' value={dataFilter.orderType} onChange={handleChange}>
                                 <option value={''} >Seleccione...</option>
                                 <option value={'Name'} >Name</option>
                             </select>
@@ -122,11 +119,11 @@ const Filters = () => {
                 </form>
             </div>
             <div>
-                <h3>{params.genre}</h3>
+                <h3>Filtrar</h3>
                 <Movies movie={movies} />
             </div>
         </div>
     )
 }
 
-export default Filters;
+export default FiltersView;
