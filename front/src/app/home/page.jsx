@@ -25,6 +25,7 @@ const Home = () => {
       let { data } = await axios.get(`${URL}movies`)
       setMovie(data)
     }
+
     const getGenres = async() => {
       let { data } = await axios.get(`${URL}genres`)
       let listGenre = data
@@ -34,6 +35,7 @@ const Home = () => {
       })
       setGenres(data)
     }
+
     getMovies()
     getGenres()
   },[]);
