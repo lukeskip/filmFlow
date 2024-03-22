@@ -2,6 +2,7 @@
 import axios from "axios";
 import Movies from "../movies/Movies";
 import Carousel from "../carousel/Carousel";
+import Navbar from "../navbar/Navbar"
 import { useState, useEffect } from "react";
 import Link from 'next/link';
 import Filters from "../filters/Filters";
@@ -43,6 +44,9 @@ const Home = () => {
   return (
   <div>
     {/* HEADER */}
+    <nav>
+      <Navbar/>
+    </nav>
     <div className="container">
       {/* TITLE */}
       <div> 
@@ -56,7 +60,8 @@ const Home = () => {
         <h2>UserInfo</h2>
       </div>
     </div>
-    {/* FORM MOVIE*/}
+    
+    {/* FORM MOVIE */}
     <div className="container">
       <Link href="/form">
         <button>Ir a Formulario</button>
