@@ -1,26 +1,23 @@
 import Link from 'next/link'
 import Account from '../account/Account'
+import styles from './Navbar.module.css'
 
 const Nav = ()=> {
     return(
         <nav>
-            <ul>
+            <ul className={styles.navList}>
                 <li>
-                    <Link href ='/'>
+                    <Link href ='#'>
                         FilmFlow
                     </Link>
                 </li>
 
                 <li>
-                    <Link href =''>
-                        search bar
-                    </Link>
+                    <a>Search bar</a>
                 </li>
 
                 <li>
-                    <Link href =''>
-                       carrito
-                    </Link>
+                    <a>Carrito</a>
                 </li>
 
                 <li>

@@ -29,12 +29,13 @@ const Home = () => {
     <nav>
       <Navbar/>
     </nav>
+    {/* 
     <div className="container">
-      {/* TITLE */}
+      {/* TITLE 
       <div> 
         <h1>FilmFlow</h1>
       </div>
-      {/* SEARCHBAR */}
+      {/* SEARCHBAR 
       <div>
         <h2>SearchBar</h2>
       </div>
@@ -42,12 +43,13 @@ const Home = () => {
         <h2>UserInfo</h2>
       </div>
     </div>
-    {/* FORM MOVIE*/}
+    */}
+    {/* FORM MOVIE
     <div className="container">
       <Link href="/form">
         <button>Ir a Formulario</button>
       </Link>
-    </div>
+    </div>*/}
     {/* CARROUSEL */}
     <Carousel movie={movie}/>
     {/* FILTROS RÁPIDOS */}
