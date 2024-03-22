@@ -1,14 +1,22 @@
-const { Movie, Genre } = require('../db');
+const { Movie, Genre, Users, Reviews } = require('../db');
 
 module.exports = async (id)=>{
     try {
         const data = {};
         const movie = await Movie.findByPk(id, {
-            include : {
+            include : [
+            {
                 model: Genre,
-                required: true
+                attributes:["id","name"],
+                through: { attributes: [] }
+            },
+            {
+                model: Users,
+                // attributes:["id","name"],
+                // through: { attributes: [] }
             }
-        })
+        ]})
+        console.log(movie)
         if(movie){
             return data.content = movie
         }
