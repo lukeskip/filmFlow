@@ -7,7 +7,7 @@ import Link from "next/link";
 const Movies = ({movie}) => {
 
     return (
-        <div className="container containerCarousel">
+        <div className="container">
             {
                 movie.map(elem =><Link href="/" key={elem.id}><Movie elem={elem}/></Link>)
             }

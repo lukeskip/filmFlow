@@ -9,7 +9,6 @@ const Carousel = ({ movie }) => {
     useEffect(() => {
         setArrMovie(movie)
     }, [movie]);
-    console.log(movie);
     const changeMovie = (direct) => {
         if(direct === 'prev'){
             if(movieIndex > 0) return setMovieIndex(movieIndex-1)
@@ -24,7 +23,6 @@ const Carousel = ({ movie }) => {
             }
         }
     }
-
     return (
         <div className="container">
             <div className={style.mainContainer}>                

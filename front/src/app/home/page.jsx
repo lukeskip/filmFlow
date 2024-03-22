@@ -4,6 +4,7 @@ import Movies from "../movies/Movies";
 import Carousel from "../carousel/Carousel";
 import { useState, useEffect } from "react";
 import Link from 'next/link';
+import Filters from "../filters/Filters";
 
 const Home = () => {
   const URL = process.env.NEXT_PUBLIC_URL
@@ -13,13 +14,30 @@ const Home = () => {
       title: 'cargando'
     }]
   )
+  const [genres, setGenres] = useState(
+    [{
+      id: 'cargando',
+      name: 'cargando'
+    }]
+  )
   useEffect(() => {
     const getMovies = async() => {
-      let { data } = await axios.get(`${URL}fake`)
+      let { data } = await axios.get(`${URL}movies`)
       setMovie(data)
     }
 
+    const getGenres = async() => {
+      let { data } = await axios.get(`${URL}genres`)
+      let listGenre = data
+      listGenre.push({
+        id: '-1',
+        name: 'More..'
+      })
+      setGenres(data)
+    }
+
     getMovies()
+    getGenres()
   },[]);
 
   return (
@@ -48,7 +66,8 @@ const Home = () => {
     <Carousel movie={movie}/>
     {/* FILTROS RÁPIDOS */}
     <div>
-      <h3>Section filters</h3> 
+      <h3>Filters</h3>
+      <Filters genres={genres}/>
     </div>
     {/* COLLECTIONS */}
     <div>
