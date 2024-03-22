@@ -3,6 +3,7 @@ import axios from "axios";
 import Movies from "../movies/Movies";
 import Carousel from "../carousel/Carousel";
 import { useState, useEffect } from "react";
+import Link from 'next/link';
 
 const Home = () => {
   const URL = process.env.NEXT_PUBLIC_URL
@@ -17,6 +18,7 @@ const Home = () => {
       let { data } = await axios.get(`${URL}fake`)
       setMovie(data)
     }
+
     getMovies()
   },[]);
 
@@ -35,6 +37,12 @@ const Home = () => {
       <div>
         <h2>UserInfo</h2>
       </div>
+    </div>
+    {/* FORM MOVIE*/}
+    <div className="container">
+      <Link href="/form">
+        <button>Ir a Formulario</button>
+      </Link>
     </div>
     {/* CARROUSEL */}
     <Carousel movie={movie}/>

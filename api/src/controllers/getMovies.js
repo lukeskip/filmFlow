@@ -11,7 +11,9 @@ module.exports = async function getMovies(query){
         let data = {}
         let options = {
             include:{
-                model:Genre
+                model:Genre,
+                attributes:["id","name"],
+                through: { attributes: [] }
             }
         }; 
 
@@ -35,7 +37,7 @@ module.exports = async function getMovies(query){
             }
         }
         
-        const movies = await Movie.findAll({...options})
+        const movies = await Movie.findAll({...options,attributes: ['id','name',"poster","director","description","duration","country","status"]})
 
         if(movies.length === 0){
             return data.message = 'No hay Peliculas'

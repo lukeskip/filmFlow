@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-    sequelize.define('Movie', {
+    sequelize.define('movie', {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -32,11 +32,7 @@ module.exports = (sequelize) => {
         status: {
             type: DataTypes.ENUM('approved', 'pending', 'declined'),
             allowNull: true,
-        },
-        isActive: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
+        }
     },
     {paranoid : true})
 }
