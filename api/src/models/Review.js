@@ -10,6 +10,14 @@ module.exports = (sequelize) => {
       points : {
         type: DataTypes.INTEGER,
         allowNull: false
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      movieId : {
+        type: DataTypes.INTEGER,
+        allowNull: false
       }
     },
     {
