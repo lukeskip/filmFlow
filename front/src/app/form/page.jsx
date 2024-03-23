@@ -9,7 +9,7 @@ const MovieForm = () => {
   const [genre, setGenre] = useState([]);
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState('');
-  const [poster, setPoster] = useState(null); // Modificado para guardar el archivo de póster
+  const [file, setFile] = useState(null);
   const [country, setCountry] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -19,30 +19,36 @@ const MovieForm = () => {
 
     try {
       const formData = new FormData();
-      formData.append('name', movieName);
-      formData.append('director', director);
-      formData.append('genres', genre.join(','));
-      formData.append('description', description);
-      formData.append('duration', parseFloat(duration));
-      formData.append('country', country);
-      formData.append('image', poster); // Agregar el archivo de póster al FormData
+      formData.append('data', file);
 
-      const response = await axios.post('http://localhost:3001/movies', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Importante para el envío de archivos
-        },
-      });
+      const response = await axios.post('http://localhost:3001/movies', formData);
+
+      const posterUrl = response.data.url;
+
+      // Envía los datos al backend
+      const movieData = {
+        name: movieName,
+        director: director,
+        genres: genre.join(','),
+        description: description,
+        duration: parseFloat(duration),
+        poster: posterUrl, // Utiliza la URL devuelta por Cloudinary
+        country: country,
+      };
+
+      const movieResponse = await axios.post('http://localhost:3001/movies', movieData);
 
       setSuccessMessage('Formulario enviado correctamente');
       setErrorMessage('');
-      console.log('Server response:', response.data);
-      
+      console.log('Server response:', movieResponse.data);
+
+      // Resetea los campos del formulario
       setMovieName('');
       setDirector('');
       setGenre([]);
       setDescription('');
       setDuration('');
-      setPoster(null); // Limpiar el archivo de póster después de enviar el formulario
+      setFile(null);
       setCountry('');
 
     } catch (error) {
@@ -52,8 +58,8 @@ const MovieForm = () => {
     }
   };
 
-  const handlePosterChange = (e) => {
-    setPoster(e.target.files[0]); // Guardar el archivo seleccionado en el estado
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
   };
 
   const toggleGenre = (selectedGenre) => {
@@ -125,7 +131,7 @@ const MovieForm = () => {
           <option value="War">Western</option>
         </select>
         <ul className="genre-list">
-        {genre.map((g) => (
+              {genre.map((g) => (
                 <li key={g}>
                   {g}{' '}
                   <button type="button" onClick={() => toggleGenre(g)}>
@@ -133,7 +139,7 @@ const MovieForm = () => {
                   </button>
                 </li>
               ))}
-               </ul>
+            </ul>
           </div>
           <div className="form-group">
             <label htmlFor="description" className="form-label">Breve descripción:</label>
@@ -157,15 +163,20 @@ const MovieForm = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="poster" className="form-label">Seleccionar Póster:</label>
+            <label htmlFor="posterFile" className="form-label">Seleccionar Póster:</label>
             <input
               type="file"
-              id="poster"
-              accept="image/*" // Acepta cualquier tipo de imagen
-              onChange={handlePosterChange}
+              id="posterFile"
+              onChange={handleFileChange}
               className="form-input"
+              accept="image/*"
               required
             />
+            {file && (
+              <div>
+                <img src={URL.createObjectURL(file)} alt="Preview" className="poster-preview" />
+              </div>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="country" className="form-label">País:</label>
@@ -185,5 +196,4 @@ const MovieForm = () => {
   );
 };
 
-export default MovieForm
-
+export default MovieForm;
