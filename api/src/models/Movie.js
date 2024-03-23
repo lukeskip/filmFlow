@@ -7,9 +7,16 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         poster: {
-            //Provisional
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
+        },
+        trailer: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        movie: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         director: {
             //Provisional

@@ -10,6 +10,8 @@ const MovieForm = () => {
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState('');
   const [file, setFile] = useState(null);
+  const [trailer, setTrailer] = useState(null);
+  const [movie, setMovie] = useState(null);
   const [country, setCountry] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -18,6 +20,31 @@ const MovieForm = () => {
     e.preventDefault();
   
     try {
+      //Promesas relacionadas a Cloudinary:
+      const posterData = new Promise((resolve, reject) => {
+        const posterReader = new FileReader();
+        posterReader.readAsDataURL(file);
+        posterReader.onload = () => resolve(posterReader.result);
+        posterReader.onerror = reject;
+      });
+  
+      const trailerData = new Promise((resolve, reject) => {
+        const movieReader = new FileReader();
+        movieReader.readAsDataURL(trailer);
+        movieReader.onload = () => resolve(movieReader.result);
+        movieReader.onerror = reject;
+      });
+      
+      const movieData = new Promise((resolve, reject) => {
+        const movieReader = new FileReader();
+        movieReader.readAsDataURL(movie);
+        movieReader.onload = () => resolve(movieReader.result);
+        movieReader.onerror = reject;
+      });
+  
+      const [posterDataURL, movieDataURL, trailerDataURL] = await Promise.all([posterData, trailerData, movieData]);
+      //
+  
       const data = {
         name: movieName,
         director: director,
@@ -25,31 +52,28 @@ const MovieForm = () => {
         description: description,
         duration: duration,
         country: country,
-        file: file
+        posterFile: posterDataURL,
+        trailerFile: trailerDataURL,
+        movieFile: movieDataURL,
       };
   
-      // Convertir la imagen a base64
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = function() {
-        data.file = reader.result;
+      // Envía los datos al backend
+      const movieResponse = axios.post('http://localhost:3001/movies', data);
+      
+      setSuccessMessage('Formulario enviado correctamente');
+      setErrorMessage('');
+      console.log('Server response:', movieResponse);
   
-        // Envía los datos al backend
-        const movieResponse = axios.post('http://localhost:3001/movies', data);
-        
-        setSuccessMessage('Formulario enviado correctamente');
-        setErrorMessage('');
-        console.log('Server response:', movieResponse);
-  
-        // Resetea los campos del formulario
-        setMovieName('');
-        setDirector('');
-        setGenre([]);
-        setDescription('');
-        setDuration('');
-        setFile(null);
-        setCountry('');
-      };
+      // Resetea los campos del formulario
+      setMovieName('');
+      setDirector('');
+      setGenre([]);
+      setDescription('');
+      setDuration('');
+      setFile(null);
+      setTrailer(null);
+      setMovie(null);
+      setCountry('');
     } catch (error) {
       setSuccessMessage('');
       setErrorMessage('Error al enviar datos: ' + error.message);
@@ -60,6 +84,12 @@ const MovieForm = () => {
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
+  };
+  const handleTrailerChange = (e) => {
+    setTrailer(e.target.files[0]);
+  };
+  const handleMovieChange = (e) => {
+    setMovie(e.target.files[0]);
   };
 
   const toggleGenre = (selectedGenre) => {
@@ -177,6 +207,28 @@ const MovieForm = () => {
                 <img src={URL.createObjectURL(file)} alt="Preview" className="poster-preview" />
               </div>
             )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="trailerFile" className="form-label">Seleccionar Trailer:</label>
+            <input
+              type="file"
+              id="trailerFile"
+              onChange={handleTrailerChange}
+              className="form-input"
+              accept="video/*"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="movieFile" className="form-label">Seleccionar Pelicula:</label>
+            <input
+              type="file"
+              id="movieFile"
+              onChange={handleMovieChange}
+              className="form-input"
+              accept="video/*"
+              required
+            />
           </div>
           <div className="form-group">
             <label htmlFor="country" className="form-label">País:</label>

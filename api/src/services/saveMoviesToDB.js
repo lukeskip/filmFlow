@@ -5,9 +5,9 @@ module.exports = async () => {
     let count = 0
     try {
         for (const actualMovie of movies) {
-            const { name, director, genres, description, duration, country, poster } = actualMovie;
+            const { name, director, genres, description, duration, country, poster, trailer, movie } = actualMovie;
 
-            const [movie, created] = await Movie.findOrCreate({
+            const [movieDB, created] = await Movie.findOrCreate({
                 where: { name },
                 defaults: {
                     director,
@@ -15,6 +15,8 @@ module.exports = async () => {
                     duration,
                     country,
                     poster,
+                    trailer,
+                    movie,
                     status: "pending"
                 }
             });
@@ -26,7 +28,7 @@ module.exports = async () => {
             for (const genreName of genresArray) {
                 let genre = await Genre.findOne({ where: { name: genreName } });
 
-                await movie.addGenre(genre);
+                await movieDB.addGenre(genre);
             }
             count++
         }
