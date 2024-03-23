@@ -1,41 +1,39 @@
 const { Movie,Genre } = require('../db')
 const cloudinary = require('cloudinary').v2;
+require("dotenv").config();
+const { CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = process.env;
 
 cloudinary.config({ 
-  cloud_name: 'dtn2ewtqg', 
-  api_key: '954151344782929', 
-  api_secret: 'BEtSAB3khkGHjkp9KpvCOkFmQbg' 
+  cloud_name: CLOUDINARY_CLOUD_NAME,
+  api_key: CLOUDINARY_API_KEY,
+  api_secret: CLOUDINARY_API_SECRET,
 });
 
 module.exports = async (body) => {
     try {
         const data = {}
 
-        let { name, director, genres, description, duration, country} = body;
+        let { name, director, genres, description, duration, country, file} = body;
 
-        if (![name, director, genres, description, duration, country].every(Boolean)) {
+        if (![name, director, genres, description, duration, country, file].every(Boolean)) {
             return data.message = "Faltan datos"
         }
         const status = "pending" 
-        const isActive = true
 
         //Cloudinary:
-        const image = body.image;
-        const bytes = await image.arrayBuffer();
-        const buffer = Buffer.from(bytes);
+        const buffer = Buffer.from(file);
 
         const cloudinaryResponse = await new Promise((resolve, reject) => {
             cloudinary.uploader
-                .upload_stream({}, (err, result) => {
+                .upload_stream({ folder: "movies"}, (err, result) => {
                     if (err) {
                         reject(err);
                     }
-
                     resolve(result)
                 })
                 .end(buffer);
         })
-        
+
         const poster = cloudinaryResponse.secure_url;
         //Cloudinary
 

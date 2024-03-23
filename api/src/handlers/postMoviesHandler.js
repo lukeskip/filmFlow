@@ -3,7 +3,6 @@ const postMovies = require("../controllers/postMovies")
 module.exports = async (req, res) => {
     try {
         const body = req.body
-        console.log(body)
 
         const data = await postMovies(body)
         console.log(data)

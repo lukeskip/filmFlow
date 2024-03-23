@@ -16,47 +16,47 @@ const MovieForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const formData = new FormData();
-      formData.append('data', file);
-
-      const response = await axios.post('http://localhost:3001/movies', formData);
-
-      const posterUrl = response.data.url;
-
-      // Envía los datos al backend
-      const movieData = {
+      const data = {
         name: movieName,
         director: director,
         genres: genre.join(','),
         description: description,
-        duration: parseFloat(duration),
-        poster: posterUrl, // Utiliza la URL devuelta por Cloudinary
+        duration: duration,
         country: country,
+        file: file
       };
-
-      const movieResponse = await axios.post('http://localhost:3001/movies', movieData);
-
-      setSuccessMessage('Formulario enviado correctamente');
-      setErrorMessage('');
-      console.log('Server response:', movieResponse.data);
-
-      // Resetea los campos del formulario
-      setMovieName('');
-      setDirector('');
-      setGenre([]);
-      setDescription('');
-      setDuration('');
-      setFile(null);
-      setCountry('');
-
+  
+      // Convertir la imagen a base64
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = function() {
+        data.file = reader.result;
+  
+        // Envía los datos al backend
+        const movieResponse = axios.post('http://localhost:3001/movies', data);
+        
+        setSuccessMessage('Formulario enviado correctamente');
+        setErrorMessage('');
+        console.log('Server response:', movieResponse);
+  
+        // Resetea los campos del formulario
+        setMovieName('');
+        setDirector('');
+        setGenre([]);
+        setDescription('');
+        setDuration('');
+        setFile(null);
+        setCountry('');
+      };
     } catch (error) {
       setSuccessMessage('');
       setErrorMessage('Error al enviar datos: ' + error.message);
       console.error('Error sending data:', error);
     }
   };
+  
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
