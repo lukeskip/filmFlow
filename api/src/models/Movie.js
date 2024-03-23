@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
         poster: {
             //Provisional
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         director: {
             //Provisional

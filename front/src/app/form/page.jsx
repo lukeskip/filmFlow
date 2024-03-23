@@ -9,7 +9,7 @@ const MovieForm = () => {
   const [genre, setGenre] = useState([]);
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState('');
-  const [posterUrl, setPosterUrl] = useState('');
+  const [poster, setPoster] = useState(null); // Modificado para guardar el archivo de póster
   const [country, setCountry] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -18,14 +18,19 @@ const MovieForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/movies', {
-        name: movieName,
-        director: director,
-        genres: genre.join(','),
-        description: description,
-        duration: parseFloat(duration),
-        poster: posterUrl,
-        country: country,
+      const formData = new FormData();
+      formData.append('name', movieName);
+      formData.append('director', director);
+      formData.append('genres', genre.join(','));
+      formData.append('description', description);
+      formData.append('duration', parseFloat(duration));
+      formData.append('country', country);
+      formData.append('image', poster); // Agregar el archivo de póster al FormData
+
+      const response = await axios.post('http://localhost:3001/movies', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Importante para el envío de archivos
+        },
       });
 
       setSuccessMessage('Formulario enviado correctamente');
@@ -37,7 +42,7 @@ const MovieForm = () => {
       setGenre([]);
       setDescription('');
       setDuration('');
-      setPosterUrl('');
+      setPoster(null); // Limpiar el archivo de póster después de enviar el formulario
       setCountry('');
 
     } catch (error) {
@@ -47,8 +52,8 @@ const MovieForm = () => {
     }
   };
 
-  const handlePosterUrlChange = (e) => {
-    setPosterUrl(e.target.value);
+  const handlePosterChange = (e) => {
+    setPoster(e.target.files[0]); // Guardar el archivo seleccionado en el estado
   };
 
   const toggleGenre = (selectedGenre) => {
@@ -152,20 +157,15 @@ const MovieForm = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="posterUrl" className="form-label">URL del Póster:</label>
+            <label htmlFor="poster" className="form-label">Seleccionar Póster:</label>
             <input
-              type="text"
-              id="posterUrl"
-              value={posterUrl}
-              onChange={handlePosterUrlChange}
+              type="file"
+              id="poster"
+              accept="image/*" // Acepta cualquier tipo de imagen
+              onChange={handlePosterChange}
               className="form-input"
               required
             />
-            {posterUrl && (
-              <div>
-                <img src={posterUrl} alt="Preview" className="poster-preview" />
-              </div>
-            )}
           </div>
           <div className="form-group">
             <label htmlFor="country" className="form-label">País:</label>
