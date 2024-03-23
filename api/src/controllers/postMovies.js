@@ -20,7 +20,7 @@ module.exports = async (body) => {
         const isActive = true
 
         //Cloudinary:
-        const image = body.image;
+        const image = body.get("image");
         const bytes = await image.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
