@@ -5,16 +5,18 @@ const orderFunction = require('../helpers/order')
 
 module.exports = async function getMovies(query){
     let {search, genre, orderType, order} = query;
-    type = orderType || ""; /*Tipo de orden (duration, name)*/ 
-    order = order || "asc"; /*Orden ascendente o descendente, por default ascendente */
+    type = orderType || ""; 
+    order = order || "asc"; 
     try {
         let data = {}
         let options = {
-            include:{
-                model:Genre,
-                attributes:["id","name"],
-                through: { attributes: [] }
-            }
+            include:[
+                {
+                    model:Genre,
+                    attributes:["id","name"],
+                    through: { attributes: [] }
+                },
+            ]
         }; 
 
         if(search){
