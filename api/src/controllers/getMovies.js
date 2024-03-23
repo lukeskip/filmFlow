@@ -28,12 +28,12 @@ module.exports = async function getMovies(query){
         }
 
         if(genre){    
-            genre = genre.split(',').map((item) => item.trim());
+            genre = genre.split(',').map((item) => item.trim().toLowerCase());
             options.include = {
                 ...options.include,
                 where: { 
                     name: { 
-                      [Op.or]: genre 
+                      [Op.or]: genre
                     }
                 },
             }
@@ -44,7 +44,7 @@ module.exports = async function getMovies(query){
             options = {
                 ...options,
                 order: [
-                    [orderType, order]
+                    [orderType, order.toLowerCase()]
                 ]
             }
         }
