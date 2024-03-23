@@ -9,7 +9,7 @@ const MovieForm = () => {
   const [genre, setGenre] = useState([]);
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState('');
-  const [posterUrl, setPosterUrl] = useState('');
+  const [file, setFile] = useState(null);
   const [country, setCountry] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -18,26 +18,37 @@ const MovieForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/movies', {
+      const formData = new FormData();
+      formData.append('data', file);
+
+      const response = await axios.post('http://localhost:3001/movies', formData);
+
+      const posterUrl = response.data.url;
+
+      // Envía los datos al backend
+      const movieData = {
         name: movieName,
         director: director,
         genres: genre.join(','),
         description: description,
         duration: parseFloat(duration),
-        poster: posterUrl,
+        poster: posterUrl, // Utiliza la URL devuelta por Cloudinary
         country: country,
-      });
+      };
+
+      const movieResponse = await axios.post('http://localhost:3001/movies', movieData);
 
       setSuccessMessage('Formulario enviado correctamente');
       setErrorMessage('');
-      console.log('Server response:', response.data);
-      
+      console.log('Server response:', movieResponse.data);
+
+      // Resetea los campos del formulario
       setMovieName('');
       setDirector('');
       setGenre([]);
       setDescription('');
       setDuration('');
-      setPosterUrl('');
+      setFile(null);
       setCountry('');
 
     } catch (error) {
@@ -47,8 +58,8 @@ const MovieForm = () => {
     }
   };
 
-  const handlePosterUrlChange = (e) => {
-    setPosterUrl(e.target.value);
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
   };
 
   const toggleGenre = (selectedGenre) => {
@@ -120,7 +131,7 @@ const MovieForm = () => {
           <option value="War">Western</option>
         </select>
         <ul className="genre-list">
-        {genre.map((g) => (
+              {genre.map((g) => (
                 <li key={g}>
                   {g}{' '}
                   <button type="button" onClick={() => toggleGenre(g)}>
@@ -128,7 +139,7 @@ const MovieForm = () => {
                   </button>
                 </li>
               ))}
-               </ul>
+            </ul>
           </div>
           <div className="form-group">
             <label htmlFor="description" className="form-label">Breve descripción:</label>
@@ -152,18 +163,18 @@ const MovieForm = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="posterUrl" className="form-label">URL del Póster:</label>
+            <label htmlFor="posterFile" className="form-label">Seleccionar Póster:</label>
             <input
-              type="text"
-              id="posterUrl"
-              value={posterUrl}
-              onChange={handlePosterUrlChange}
+              type="file"
+              id="posterFile"
+              onChange={handleFileChange}
               className="form-input"
+              accept="image/*"
               required
             />
-            {posterUrl && (
+            {file && (
               <div>
-                <img src={posterUrl} alt="Preview" className="poster-preview" />
+                <img src={URL.createObjectURL(file)} alt="Preview" className="poster-preview" />
               </div>
             )}
           </div>
@@ -185,5 +196,4 @@ const MovieForm = () => {
   );
 };
 
-export default MovieForm
-
+export default MovieForm;
