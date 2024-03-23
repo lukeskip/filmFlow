@@ -12,6 +12,8 @@ module.exports = async (body) => {
         const status = "pending" 
         const isActive = true
 
+        //Cloudinary:
+
         const [movie, created] = await Movie.findOrCreate({
             where: { name },
             defaults: { poster, director, description, duration, country, status },
