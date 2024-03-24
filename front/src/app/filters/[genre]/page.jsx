@@ -99,7 +99,8 @@ const Filter = ({ params }) => {
                             <label>OrderType:</label>
                             <select name='orderType' value={dataFilter.orderType} onChange={handleChange}>
                                 <option value={''} >Seleccione...</option>
-                                <option value={'Name'} >Name</option>
+                                <option value={'name'} >Name</option>
+                                <option value={'duration'} >Duration</option>
                             </select>
                         </div>
                         <div>
