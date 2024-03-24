@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
 const MovieForm = () => {
   const [movieName, setMovieName] = useState('');
@@ -185,5 +186,5 @@ const MovieForm = () => {
   );
 };
 
-export default MovieForm
+export default withPageAuthRequired(MovieForm)
 
