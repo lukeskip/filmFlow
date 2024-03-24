@@ -5,7 +5,6 @@ module.exports = async (req, res) => {
         const body = req.body
 
         const data = await postMovies(body)
-        console.log(data)
 
         if (data.message) {
             return res.status(404).json({ message: data.message})
