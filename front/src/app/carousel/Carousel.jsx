@@ -1,8 +1,8 @@
 import style from "./Carousel.module.css";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Movie from "../movie/Movie";
 
-const Carousel = ({ movie }) => {
+const Carousel = ({ movie, dim }) => {
     const [movieIndex, setMovieIndex] = useState(0);
     const [arrMovie, setArrMovie] = useState(movie);
     const URL = process.env.NEXT_PUBLIC_URL
@@ -27,7 +27,11 @@ const Carousel = ({ movie }) => {
         <div className="container">
             <div className={style.mainContainer}>                
                 {
-                    <Movie key={arrMovie[movieIndex].id} elem={arrMovie[movieIndex]}/>
+                    <Movie 
+                        key={arrMovie[movieIndex].id} 
+                        elem={arrMovie[movieIndex]}
+                        dim={dim}
+                    />
                 }
                 <div className={style.leftArrow} onClick={() => changeMovie('prev')}>&#10092;</div>
                 <div className={style.rightArrow} onClick={() => changeMovie('next')}>&#10093;</div>                

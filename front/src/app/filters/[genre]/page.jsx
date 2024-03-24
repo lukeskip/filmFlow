@@ -1,15 +1,16 @@
 'use client'
+import Navbar from "../../navbar/Navbar"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Movies from '@/app/movies/Movies'
-import { useRouter } from 'next/navigation'
 
-const FiltersView = () => {
-    const router = useRouter()
-    const params = router.params
-    console.log(params);
-    let URL = process.env.NEXT_PUBLIC_URL
-    const [urlFilter, setUrlFilter] = useState([`${URL}movies`])
+const Filter = ({ params }) => {
+    const URL = process.env.NEXT_PUBLIC_URL
+    let URL2 = URL
+    params.genre !== "Search" 
+        ? URL2 = URL2 + `movies?search=&genre=${params.genre}`
+        : URL2 = URL + `movies?`
+    const [urlFilter, setUrlFilter] = useState([URL2])
     const [movies, setMovies] = useState(
         [{
             id: 'cargando',
@@ -30,31 +31,20 @@ const FiltersView = () => {
     })
     
     useEffect(() => {
+        const getGenres = async() => {
+            let { data } = await axios.get(`${URL}genres`)
+            setGenres(data)
+        }
+        getGenres()
+    },[]);
+    useEffect(() => {
         const getMovies = async() => {
-            try {
-                let { data } = await axios.get(urlFilter)
-                console.log(data);
-                //if(data.original.name === "error") return alert("Falló la solicitud")
-                if(data !== "No hay Peliculas") return setMovies(data)
-                setMovies([{id: 0, name: "Not Found"}])  
-            }catch (e) {
-                console.log(e.message);
-            }
+            let { data } = await axios.get(urlFilter)
+            if(data !== "No hay Peliculas") return setMovies(data)
+            setMovies([{id: 0, name: "Not Found"}])
         }
         getMovies()
     },[urlFilter]);
-
-    useEffect(() => {
-        const getGenres = async() => {
-            try{
-                let { data } = await axios.get(`${URL}genres`)
-                setGenres(data);
-            }catch (e) {
-                console.log(e.message);
-            }
-        }
-        getGenres()
-    }, [])
 
     const handleChange = (event) => {
         if (event.target.name === 'search') {
@@ -69,12 +59,11 @@ const FiltersView = () => {
     }
 
     const applyFilter = () => {
-        let path = URL
-        path = path + `movies?search=${dataFilter.search}`
-        if(dataFilter.genre !== '') path = path + `&genre=${dataFilter.genre}`
-        if(dataFilter.orderType !== '') path = path + `&orderType=${dataFilter.orderType}`
-        if(dataFilter.order !== '') path = path + `&order=${dataFilter.order}`
-        setUrlFilter(path)
+        URL2 = URL + `movies?search=${dataFilter.search}`
+        if(dataFilter.genre !== '') URL2 = URL2 + `&genre=${dataFilter.genre}`
+        if(dataFilter.orderType !== '') URL2 = URL2 + `&orderType=${dataFilter.orderType}`
+        if(dataFilter.order !== '') URL2 = URL2 + `&order=${dataFilter.order}`
+        setUrlFilter(URL2)
     }
 
     const handleSubmit = (event) => {
@@ -84,6 +73,7 @@ const FiltersView = () => {
 
     return(
         <div>
+            <Navbar />
             <div>
                 <form onSubmit={handleSubmit}>
                     <fieldset>
@@ -140,4 +130,4 @@ const FiltersView = () => {
     )
 }
 
-export default FiltersView;
+export default Filter;
