@@ -5,8 +5,10 @@ import Carousel from "../carousel/Carousel";
 import Navbar from "../navbar/Navbar"
 import { useState, useEffect } from "react";
 import Filters from "../filters/Filters";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const Home = () => {
+  const {error, isLoading, user} = useUser()
   const URL = process.env.NEXT_PUBLIC_URL
   const [movie, setMovie] = useState(
     [{
@@ -43,9 +45,23 @@ const Home = () => {
   return (
   <div>
     <div className="container">
+
+      {/* TITLE */}
+      <div> 
+        <h1>FilmFlow</h1>
+      </div>
+      {/* SEARCHBAR */}
+      <div>
+        <h2>SearchBar</h2>
+      </div>
+      <div>
+        {!user ? <a href="/api/auth/login"><button>Login</button></a> : <h2>{user.nickname}</h2>}
+      </div>
+
       <nav >
         <Navbar/>
       </nav>
+
     </div>
     <Carousel movie={movie} dim={['900px', '400px']}/>
     <div>
