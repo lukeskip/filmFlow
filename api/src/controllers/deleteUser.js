@@ -5,7 +5,7 @@ module.exports = async (id) => {
         const data = {}
         const rows = await User.destroy({where : {id}})
         if(rows){
-            return {status:true}
+            return {status:true,message:"El usuario fue borrado con éxito"}
         }
         return {status:false}
     } catch (error) {
