@@ -1,11 +1,15 @@
 'use client'
+import Navbar from "../../navbar/Navbar"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Movies from '@/app/movies/Movies'
 
-const FiltersView = () => {
+const Filter = ({ params }) => {
     const URL = process.env.NEXT_PUBLIC_URL
-    let URL2 = URL + `movies?`
+    let URL2 = URL
+    params.genre !== "Search" 
+        ? URL2 = URL2 + `movies?search=&genre=${params.genre}`
+        : URL2 = URL + `movies?`
     const [urlFilter, setUrlFilter] = useState([URL2])
     const [movies, setMovies] = useState(
         [{
@@ -36,7 +40,6 @@ const FiltersView = () => {
     useEffect(() => {
         const getMovies = async() => {
             let { data } = await axios.get(urlFilter)
-            console.log(data);
             if(data !== "No hay Peliculas") return setMovies(data)
             setMovies([{id: 0, name: "Not Found"}])
         }
@@ -70,6 +73,7 @@ const FiltersView = () => {
 
     return(
         <div>
+            <Navbar />
             <div>
                 <form onSubmit={handleSubmit}>
                     <fieldset>
@@ -95,7 +99,8 @@ const FiltersView = () => {
                             <label>OrderType:</label>
                             <select name='orderType' value={dataFilter.orderType} onChange={handleChange}>
                                 <option value={''} >Seleccione...</option>
-                                <option value={'Name'} >Name</option>
+                                <option value={'name'} >Name</option>
+                                <option value={'duration'} >Duration</option>
                             </select>
                         </div>
                         <div>
@@ -126,4 +131,4 @@ const FiltersView = () => {
     )
 }
 
-export default FiltersView;
+export default Filter;

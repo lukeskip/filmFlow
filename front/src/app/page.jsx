@@ -50,7 +50,7 @@ const Landing = () => {
     <div className="container">
       <div>
         <h1>Landing</h1>
-          <Carousel movie={movie}/>
+          <Carousel movie={movie} dim={['600px', '400px']}/>
           <button onClick={()=>router.push('/home')}>Ingresar</button>
       </div>
       <div>
