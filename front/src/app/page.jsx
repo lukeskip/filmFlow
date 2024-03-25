@@ -1,44 +1,65 @@
 'use client'
-import Cards from "./cards/Cards";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import axios from "axios";
+import Movies from "./movies/Movies";
+import Carousel from "./carousel/Carousel";
 import { useState, useEffect } from "react";
-import FormularioPelicula from "./form/form";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
-export default function Home() {
-  const [content, setContent] = useState(
+const Landing = () => {
+
+  const {error, isLoading, user} = useUser()
+  const router = useRouter();
+  const URL = process.env.NEXT_PUBLIC_URL
+  const [movie, setMovie] = useState(
     [{
       id: 'cargando',
       title: 'cargando'
     }]
   )
+
+  function home(){
+    if(user){
+      router.push('/home')
+    }
+  }
+
   useEffect(() => {
     const getMovies = async() => {
-      let { data } = await axios.get('http://localhost:3001/movies')
-      setContent(data)
+      let { data } = await axios.get(`${URL}movies`)
+      setMovie(data)
     }
     getMovies()
   },[]);
 
+  home()
+
+  if(error){
+    return (
+      <div>Error</div>
+    )
+  }
+
+  if(isLoading){
+    return (
+      <div>Loading...</div>
+    )
+  }
+
   return (
-  <div>
-    {/* HEADER */}
-    <div> 
-      <h1>FilmFlow</h1>
+    <div className="container">
+      <div>
+        <h1>Landing</h1>
+          <Carousel movie={movie} dim={['600px', '400px']}/>
+          <button onClick={()=>router.push('/home')}>Ingresar</button>
+      </div>
+      <div>
+        <p>Reemplazar esta linea por COMP LOGIN</p>
+        {!user ? <a href="/api/auth/login"><button>Login</button></a> : ""}
+        
+      </div>
     </div>
-    {/* SEARCHBAR */}
-    <div>
-      <h2>SearchBar</h2>
-    </div>
-    {/* FORM LOGIN - BANNER */}
-    <div>
-       <h3><FormularioPelicula /></h3> 
-      <h3>FormularioPelicula</h3>
-    </div>
-    {/* CARDS */}
-    <div>
-      <h4><Link href='/'><Cards key={content.id} values={content} /></Link></h4>
-    </div>
-  </div>
-  );
+    )
 }
+
+  export default Landing;

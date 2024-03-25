@@ -25,17 +25,14 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     dob: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING, //CAMBIAR A DATE
       allowNull: false,
-    },
-    isActive: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
     },
     roleID: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-  });
+  },
+  {paranoid : true});
 };
 

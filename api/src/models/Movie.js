@@ -1,22 +1,24 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-    sequelize.define('Content', {
+    sequelize.define('movie', {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         poster: {
-            //Provisional
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        trailer: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        movie: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         director: {
-            //Provisional
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        genre: {
             //Provisional
             type: DataTypes.STRING,
             allowNull: false,
@@ -30,21 +32,14 @@ module.exports = (sequelize) => {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
         country: {
             type: DataTypes.STRING,
             allowNull: true,
         },
         status: {
             type: DataTypes.ENUM('approved', 'pending', 'declined'),
-            allowNull: false,
-        },
-        isActive: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
-    })
+            allowNull: true,
+        }
+    },
+    {paranoid : true})
 }
