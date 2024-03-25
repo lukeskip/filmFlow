@@ -1,4 +1,4 @@
-const {Reviews, User, Movie} = require('../db')
+const {Review, User, Movie} = require('../db')
 
 module.exports = async (userId, movieId, comment, points) => {
     try {
@@ -14,7 +14,7 @@ module.exports = async (userId, movieId, comment, points) => {
             return error
         } 
 
-        const review = await Reviews.create(
+        const review = await Review.create(
             {
             userId: user.id,
             movieId : movie.id,
