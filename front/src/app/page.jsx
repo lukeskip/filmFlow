@@ -1,8 +1,8 @@
 'use client'
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Movies from "./movies/Movies";
-import Carousel from "./carousel/Carousel";
+import Movies from "../components/movies/Movies";
+import Carousel from "../components/carousel/Carousel";
 import { useState, useEffect } from "react";
 import { useUser } from '@auth0/nextjs-auth0/client';
 

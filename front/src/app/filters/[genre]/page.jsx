@@ -1,4 +1,5 @@
 'use client'
+<<<<<<< HEAD
 import Navbar from "@/app/navbar/Navbar"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
@@ -6,6 +7,12 @@ import Movies from '@/app/movies/Movies'
 import Movie from "@/app/movie/Movie"
 import Link from "next/link"
 import style from "./page.module.css"
+=======
+import Navbar from "../../../components/navbar/Navbar"
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import Movies from '../../../components/movies/Movies'
+>>>>>>> 56a79b01cba4bd00b810721f2dd7117ddd59575d
 
 const Filter = ({ params }) => {
     const URL = process.env.NEXT_PUBLIC_URL
