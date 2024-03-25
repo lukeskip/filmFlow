@@ -1,8 +1,11 @@
 'use client'
-import Navbar from "../../navbar/Navbar"
+import Navbar from "@/app/navbar/Navbar"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Movies from '@/app/movies/Movies'
+import Movie from "@/app/movie/Movie"
+import Link from "next/link"
+import style from "./page.module.css"
 
 const Filter = ({ params }) => {
     const URL = process.env.NEXT_PUBLIC_URL
@@ -73,7 +76,9 @@ const Filter = ({ params }) => {
 
     return(
         <div>
-            <Navbar />
+            <div>    
+                <Navbar />
+            </div>
             <div>
                 <form onSubmit={handleSubmit}>
                     <fieldset>
@@ -123,9 +128,18 @@ const Filter = ({ params }) => {
                     </fieldset>
                 </form>
             </div>
-            <div>
-                <h3>Filtrar</h3>
-                <Movies movie={movies} />
+            <div className={`container ${style.order}`}>
+                {
+                    movies.map((elem, index) => {
+                        if(true){
+                            return (<Link 
+                                href={`/`}
+                                key={elem.id}>                                     
+                                    <Movie elem={elem}  />
+                            </Link>)
+                        }
+                    })
+                }
             </div>
         </div>
     )
