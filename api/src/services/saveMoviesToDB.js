@@ -26,7 +26,7 @@ module.exports = async () => {
             const genresArray = genres.split(',').map(genre => genre.trim());
 
             for (const genreName of genresArray) {
-                let genre = await Genre.findOne({ where: { name: genreName } });
+                let genre = await Genre.findOne({ where: { name: genreName.toLocaleLowerCase() } });
 
                 await movieDB.addGenre(genre);
             }

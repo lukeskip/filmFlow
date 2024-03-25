@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import style from './form.module.css'
+
 
 const MovieForm = () => {
 
@@ -265,4 +267,7 @@ const MovieForm = () => {
   );
 };
 
-export default MovieForm;
+
+export default withPageAuthRequired(MovieForm)
+
+
