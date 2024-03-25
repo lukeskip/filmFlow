@@ -1,4 +1,4 @@
-const { User } = require("../db");
+const { User,Role } = require("../db");
 module.exports = async (body) => {
   const errors = {}
   const { email,name,sid,picture } = body;
@@ -16,16 +16,18 @@ module.exports = async (body) => {
   }
 
   if (Object.keys(errors).length === 0) {
-    const roleId = 1;
+    const role = await Role.findOne({where:{role:"viewer"}})
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { name,picture,roleId,sid },
+      defaults: { name,picture,roleId:role.id,sid },
     });
 
     if(!created){
       user.sid = sid;
       user.save();
     }
+
+   
 
     return {status:true,sid:user.sid}
     

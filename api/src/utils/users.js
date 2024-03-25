@@ -2,19 +2,19 @@ module.exports = [
     {
         name: 'Angel',
         email: 'correo@mail.com',
-        sid:"asuidfddfdsasidfasoidfuaaa",
-        roleId: 1
+        sid:"1111",
+        role: "admin"
     },
     {
         name: 'Japheth',
         email: 'japheth@mail.com',
-        sid:"asuidfasidfasoidfssduaaa",
-        roleId: 1
+        sid:"2222",
+        role: "viewer"
     },
     {
         name: 'Japhethaa',
         email: 'ramirez@mail.com',
-        sid:"asuidfasidfasoidfuafdssdfaa",
-        roleId: 1
+        sid:"3333",
+        role: "producer"
     },
 ]

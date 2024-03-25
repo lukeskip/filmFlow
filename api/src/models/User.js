@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     roleId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
     },
   },
