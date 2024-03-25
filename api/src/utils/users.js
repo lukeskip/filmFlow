@@ -1,29 +1,20 @@
 module.exports = [
     {
         name: 'Angel',
-        email: 'angel@mail.com',
-        password: 'password',
-        token: 123456789,
-        img: 'hjshdksjh',
-        dob: "jshjdhsjka",
-        roleID: 1
+        email: 'correo@mail.com',
+        sid:"asuidfddfdsasidfasoidfuaaa",
+        roleId: 1
     },
     {
         name: 'Japheth',
         email: 'japheth@mail.com',
-        password: 'password',
-        token: 12345654789,
-        img: 'hjshdwdwksjh',
-        dob: "jshjdhsjka",
-        roleID: 1
+        sid:"asuidfasidfasoidfssduaaa",
+        roleId: 1
     },
     {
-        name: 'Ramirez',
+        name: 'Japhethaa',
         email: 'ramirez@mail.com',
-        password: 'password',
-        token: 123789,
-        img: 'hjshdwdwdwddwksjh',
-        dob: "jshjdhsjka",
-        roleID: 1
-    }
+        sid:"asuidfasidfasoidfuafdssdfaa",
+        roleId: 1
+    },
 ]

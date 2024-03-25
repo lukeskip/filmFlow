@@ -6,8 +6,8 @@ module.exports = async () => {
     try {
         let count = 0;
         for(let user of users){
-            const {name, email, password, token, img, dob, roleID} = user
-            await User.create({name, email, password, token, img, dob, roleID})
+            const {name, email, roleId,sid} = user
+            await User.create({name, email, roleId,sid})
             count++
         }
         console.log(`Successfully created ${count} Users`)

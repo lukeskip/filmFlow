@@ -10,25 +10,16 @@ module.exports = (sequelize) => {
       unique: true,
       allowNull: false,
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    token: {
+    sid: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
     },
-    img: {
+    picture: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: true,
     },
-    dob: {
-      type: DataTypes.STRING, //CAMBIAR A DATE
-      allowNull: false,
-    },
-    roleID: {
+    roleId: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
