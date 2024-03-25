@@ -1,16 +1,22 @@
 const { User,Role } = require("../db");
 module.exports = async (body) => {
   const errors = {}
-  const { email,name,sid,picture } = body;
+  let { email,name,sid,picture,nickname } = body;
   
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if(!email && regex.test(email)){
     errors.email = "Falta un correo válido"
   }
-  if(!name){
-    errors.name = "Falta un nombre"
+  
+  if(!nickname){
+    errors.nickname = "Falta un nickname"
   }
+
+  if(!name){
+    name = nickname
+  }
+
   if(!sid || sid.length !== 32){
     errors.sid = "Falta un sid válido"
   }
@@ -27,8 +33,7 @@ module.exports = async (body) => {
       user.save();
     }
 
-   
-
+  
     return {status:true,sid:user.sid}
     
   }else{

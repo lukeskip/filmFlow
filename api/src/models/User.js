@@ -5,6 +5,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    family_name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    given_name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     email: {
       type: DataTypes.STRING,
       unique: true,
