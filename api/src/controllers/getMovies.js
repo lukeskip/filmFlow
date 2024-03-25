@@ -10,13 +10,11 @@ module.exports = async function getMovies(query){
     try {
         let data = {}
         let options = {
-            include:[
-                {
-                    model:Genre,
-                    attributes:["id","name"],
-                    through: { attributes: [] }
-                },
-            ]
+            include:{
+                model:Genre,
+                attributes:["id","name"],
+                through: { attributes: [] }
+            }
         }; 
 
         if(search){
