@@ -1,8 +1,8 @@
 'use client'
 import axios from "axios";
-import Movies from "../movies/Movies";
-import Carousel from "../carousel/Carousel";
-import Navbar from "../navbar/Navbar"
+import Movies from "../../components/movies/Movies";
+import Carousel from "../../components/carousel/Carousel";
+import Navbar from "../../components/navbar/Navbar"
 import { useState, useEffect } from "react";
 import Filters from "../filters/Filters";
 import { useUser } from '@auth0/nextjs-auth0/client';

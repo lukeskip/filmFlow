@@ -1,5 +1,5 @@
 'use client'
-import Movie from "../movie/Movie";
+import Movie from "../../components/movie/Movie";
 import Link from "next/link";
 import style from "./Filters.module.css"
 import { useState } from "react";
