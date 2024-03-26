@@ -10,7 +10,7 @@ const Movie = ({ elem, dim }) => {
                 height={dim ? dim[1] : '300px'}
             />
             <p>{elem.name}</p>
-            {/* <Buy movie = {elem}></Buy> */}
+            <Buy movie = {elem}></Buy>
         </div>
     )
 }

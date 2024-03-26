@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
             res.status(404).json('No hay productos')
             return 
         }
-        const session = await postCheckout(body)
+        const session = await postCheckout(body.list)
         res.status(200).json(session)
     } catch (error) {
         res.status(500).json(error)
