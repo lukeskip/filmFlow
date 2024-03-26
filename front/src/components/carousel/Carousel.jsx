@@ -1,4 +1,4 @@
-import style from "./Carousel.module.css";
+import style from "./Carousel.module.scss";
 import { useEffect, useState } from "react";
 import Movie from "../movie/Movie";
 
