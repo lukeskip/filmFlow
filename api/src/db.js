@@ -40,8 +40,10 @@ Genre.belongsToMany(Movie, { through: "movie_genre" });
 
 Movie.hasMany(Review)
 Review.belongsTo(Movie)
+Movie.belongsTo(User)
 
 User.hasMany(Review)
+User.hasMany(Movie)
 User.hasOne(Role)
 Role.belongsTo(User)
 Review.belongsTo(User)

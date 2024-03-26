@@ -11,9 +11,10 @@ cloudinary.config({
 
 module.exports = async (body) => {
     try {
+        const user = User.findOne({where:{sid:auth}});
         const data = {}
 
-        let { name, director, genres, description, duration, country, posterFile, movieFile, trailerFile} = body;
+        let { name, director, genres, description, duration, country, posterFile, movieFile, trailerFile,auth} = body;
 
         if (![name, director, genres, description, duration, country, posterFile, movieFile, trailerFile].every(Boolean)) {
             return data.message = "Faltan datos"
@@ -63,10 +64,11 @@ module.exports = async (body) => {
         const trailer = cloudinaryTrailerResponse.secure_url;
         const movie = cloudinaryMovieResponse.secure_url;
         //
-
+        
+        const userId = isAdmin() ? undefined : user.id;
         const [movieDB, created] = await Movie.findOrCreate({
             where: { name },
-            defaults: { poster, movie, trailer, director, description, duration, country, status },
+            defaults: { poster, movie, trailer, director, description, duration, country, status, userId },
         });
 
         
