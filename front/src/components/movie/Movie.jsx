@@ -1,4 +1,5 @@
 import style from "./Movie.module.css"
+import Buy from '../btnBuy/buy'
 
 const Movie = ({ elem, dim }) => {
     return(
@@ -9,6 +10,7 @@ const Movie = ({ elem, dim }) => {
                 height={dim ? dim[1] : '300px'}
             />
             <p>{elem.name}</p>
+            {/* <Buy movie = {elem}></Buy> */}
         </div>
     )
 }
