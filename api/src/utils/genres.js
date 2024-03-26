@@ -1,1 +1,21 @@
-module.exports = ["action", "adventure", "animation", "comedy", "crime", "documentary", "drama", "family", "fantasy", "history", "horror", "music", "mystery", "romance", "science fiction", "tv movie", "thriller", "war", "western"]
+module.exports = [
+    { name: "action", emoji: "🪖" },
+    { name: "adventure", emoji: "🤠" },
+    { name: "animation", emoji: "🎬" },
+    { name: "comedy", emoji: "😂" },
+    { name: "crime", emoji: "🔫" },
+    { name: "documentary", emoji: "📽️" },
+    { name: "drama", emoji: "🎭" },
+    { name: "family", emoji: "👪" },
+    { name: "fantasy", emoji: "🔮" },
+    { name: "history", emoji: "📜" },
+    { name: "horror", emoji: "👻" },
+    { name: "music", emoji: "🎵" },
+    { name: "mystery", emoji: "🕵️‍♂️" },
+    { name: "romance", emoji: "❤️" },
+    { name: "science fiction", emoji: "🚀" },
+    { name: "tv movie", emoji: "📺" },
+    { name: "thriller", emoji: "🔪" },
+    { name: "war", emoji: "🪖" },
+    { name: "western", emoji: "🤠" }
+];
