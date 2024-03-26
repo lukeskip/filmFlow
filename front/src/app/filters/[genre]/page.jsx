@@ -1,5 +1,4 @@
 'use client'
-import Navbar from "../../../components/navbar/Navbar"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Movie from '../../../components/movie/Movie'
@@ -93,9 +92,6 @@ const Filter = ({ params }) => {
 
     return(
         <div>
-            <div>    
-                <Navbar />
-            </div>
             <div>
                 <form onSubmit={handleSubmit}>
                     <fieldset>
