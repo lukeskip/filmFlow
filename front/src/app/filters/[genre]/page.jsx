@@ -1,8 +1,8 @@
 'use client'
-import Navbar from "../../navbar/Navbar"
+import Navbar from "../../../components/navbar/Navbar"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import Movies from '@/app/movies/Movies'
+import Movies from '../../../components/movies/Movies'
 
 const Filter = ({ params }) => {
     const URL = process.env.NEXT_PUBLIC_URL
