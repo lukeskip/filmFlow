@@ -1,7 +1,7 @@
 
 'use client'
 import Movie from "../movie/Movie";
-import style from "./Movies.module.css";
+import style from "./Movies.module.scss";
 import Link from "next/link";
 import { useState } from "react";
 

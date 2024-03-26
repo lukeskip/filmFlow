@@ -1,4 +1,5 @@
-import style from "./Movie.module.css"
+import style from "./Movie.module.scss"
+import Buy from '../btnBuy/buy'
 
 const Movie = ({ elem, dim }) => {
     return(
@@ -8,7 +9,10 @@ const Movie = ({ elem, dim }) => {
                 width={dim ? dim[0] : '200px'}
                 height={dim ? dim[1] : '300px'}
             />
+
             <p className={style.order}>{elem.name}</p>
+            <Buy movie = {elem}></Buy>
+
         </div>
     )
 }
