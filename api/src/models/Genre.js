@@ -5,6 +5,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       unique: true,
     },
+    label: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     emoji: {
       type: DataTypes.STRING,
       allowNull: true,

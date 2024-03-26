@@ -32,7 +32,9 @@ const Home = () => {
       let listGenre = data
       listGenre.unshift({
         id: '-1',
-        name: 'Search'
+        name: 'Search',
+        label: 'Search',
+        emoji:"🔍"
       })
       setGenres(data)
     }

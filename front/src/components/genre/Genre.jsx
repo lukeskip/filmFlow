@@ -5,7 +5,7 @@ export default function Genre({genre}) {
   return (
     <div className={style.genre}>
         <div className={style.emoji}>{genre.emoji}</div>
-        <h4 className={style.name}>{genre.name}</h4>
+        <h4 className={style.name}>{genre.label}</h4>
     </div>
   )
 }

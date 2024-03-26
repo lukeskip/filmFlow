@@ -2,11 +2,13 @@
 .genre {
   .emoji {
     text-align: center;
+    font-size: 2.5em;
   }
+
   .name {
     text-align: center;
     margin: 0;
-    text-decoration: ;
     color: $neutralDark;
+    text-transform: capitalize;
   }
 }
