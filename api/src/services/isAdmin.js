@@ -1,8 +1,7 @@
-const {User, Role} = '../db.js';
-module.exports = async(sid)=>{
+const {User, Role} = require('../db.js');
+module.exports = async (user) => {
     const isAdmin = false;
-    const user = User.findOne({where:{sid}});
-    const role = Role.findOne({where:{role:"admin"}});
+    const role = await Role.findOne({where:{role:"admin"}});
     if(user.roleid === role.id) isAdmin = true;
     return isAdmin;
 }
