@@ -3,6 +3,7 @@ const {movies} = require('./api')
 const moviesRouter = require('./moviesRouter')
 const genresRouter = require('./genresRouter')
 const reviewsRouter = require('./reviewsRouter')
+const usersRouter = require('./usersRouter')
 const cartRouter = require('./cartRouter')
 
 const router = Router()
@@ -13,6 +14,7 @@ router.get('/fake', async (req, res)=>{
 router.get('/', async (req, res)=>{
     res.status(200).json({"message":"welcome"})
 })
+router.use('/users',usersRouter);
 router.use('/movies',moviesRouter);
 router.use('/genres',genresRouter);
 router.use('/reviews',reviewsRouter);
