@@ -23,8 +23,7 @@ module.exports = async (req) => {
            return {status:false,errors:validation.errors}
         }
 
-        let { name, director, genres, description, duration, country, posterFile, movieFile, trailerFile} = body;
-
+        let { name, director, genres, description, duration, country, posterFile, trailerFile, movieFile} = body;
        
         const status = "pending" 
 
@@ -47,7 +46,7 @@ module.exports = async (req) => {
         //Posteo del trailer en Cloudinary
         const cloudinaryTrailerResponse = await new Promise((resolve, reject) => {
             cloudinary.uploader
-                .upload(trailerFile, { resource_type: "video", folder: "trailers" }, (err, result) => {
+                .upload(trailerFile, { resource_type: "video", folder: "movies" }, (err, result) => {
                     if (err) {
                         reject(err);
                     }
@@ -58,7 +57,7 @@ module.exports = async (req) => {
         //Posteo de la pelicula en el Cloudinary
         const cloudinaryMovieResponse = await new Promise((resolve, reject) => {
             cloudinary.uploader
-                .upload(movieFile, { resource_type: "video", folder: "movies" }, (err, result) => {
+                .upload(movieFile, { resource_type: "video", folder: "trailers" }, (err, result) => {
                     if (err) {
                         reject(err);
                     }
@@ -68,8 +67,8 @@ module.exports = async (req) => {
 
         //Guardo las URL recibidas en las variables que voy a mandar a la DB
         const poster = cloudinaryPosterResponse.secure_url;
-        const trailer = cloudinaryTrailerResponse.secure_url;
-        const movie = cloudinaryMovieResponse.secure_url;
+        const trailer = cloudinaryMovieResponse.secure_url;
+        const movie = cloudinaryTrailerResponse.secure_url;
         //
         
         const userId = isAdmin(user) ? undefined : user.id;
