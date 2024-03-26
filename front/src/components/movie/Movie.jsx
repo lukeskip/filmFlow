@@ -1,4 +1,4 @@
-import style from "./Movie.module.css"
+import style from "./Movie.module.scss"
 import Buy from '../btnBuy/buy'
 
 const Movie = ({ elem, dim }) => {

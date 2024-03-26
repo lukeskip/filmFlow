@@ -1,7 +1,7 @@
 'use client'
 import Movie from "../../components/movie/Movie";
 import Link from "next/link";
-import style from "./Filters.module.css"
+import style from "./Filters.module.scss"
 import { useState } from "react";
 
 const FiltersView = ({genres}) => {

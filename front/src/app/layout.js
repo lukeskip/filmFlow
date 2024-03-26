@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../scss/globals.scss";
 import { UserProvider } from '@auth0/nextjs-auth0/client'
 
 export const metadata = {
@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <UserProvider>
-        <body>
+        <body className="wrapper">
           {children}
           </body>
       </UserProvider>
