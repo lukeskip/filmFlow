@@ -1,4 +1,4 @@
-import style from "./Movie.module.css"
+import style from "./Movie.module.scss"
 
 const Movie = ({ elem, dim }) => {
     return(
