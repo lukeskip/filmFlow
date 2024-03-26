@@ -1,8 +1,9 @@
 'use client'
-import Navbar from "../../../components/navbar/Navbar"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import Movies from '../../../components/movies/Movies'
+import Movie from '../../../components/movie/Movie'
+import Link from "next/link"
+import style from "./page.module.css"
 
 const Filter = ({ params }) => {
     const URL = process.env.NEXT_PUBLIC_URL
@@ -29,6 +30,10 @@ const Filter = ({ params }) => {
         orderType: "",
         order: "" 
     })
+    const [pagination, setPagination] = useState({
+        page: 1,
+        step: 12,
+    });
     
     useEffect(() => {
         const getGenres = async() => {
@@ -44,7 +49,21 @@ const Filter = ({ params }) => {
             setMovies([{id: 0, name: "Not Found"}])
         }
         getMovies()
+        
     },[urlFilter]);
+
+    const changePage = (direct) => {
+        if(direct === 'prev'){
+            if(pagination.page > 1){
+                setPagination({...pagination, page: pagination.page-1})
+            }
+        }
+        else{
+            if(pagination.page < Math.ceil(movies.length/pagination.step)){
+                setPagination({...pagination, page: pagination.page+1})
+            }
+        }
+    }
 
     const handleChange = (event) => {
         if (event.target.name === 'search') {
@@ -73,7 +92,6 @@ const Filter = ({ params }) => {
 
     return(
         <div>
-            <Navbar />
             <div>
                 <form onSubmit={handleSubmit}>
                     <fieldset>
@@ -123,9 +141,32 @@ const Filter = ({ params }) => {
                     </fieldset>
                 </form>
             </div>
+            <div className={`container ${style.order}`}>
+                {
+                    movies.map((elem, index) => {
+                        if((index >= (pagination.page-1)*pagination.step) 
+                            && index <= (pagination.page*pagination.step)-1){
+                            return (<Link 
+                                href={`/`}
+                                key={elem.id}>                                     
+                                    <Movie elem={elem}  />
+                            </Link>)
+                        }
+                    })
+                }
+            </div>
             <div>
-                <h3>Filtrar</h3>
-                <Movies movie={movies} />
+                <input 
+                    type="button" 
+                    value="Anterior" 
+                    onClick={() => changePage('prev')}
+                />
+                <label>{pagination.page}</label>
+                <input 
+                    type="button" 
+                    value="Siguiente" 
+                    onClick={() => changePage('next')}
+                />
             </div>
         </div>
     )

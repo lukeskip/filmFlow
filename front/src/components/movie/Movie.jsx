@@ -8,7 +8,7 @@ const Movie = ({ elem, dim }) => {
                 width={dim ? dim[0] : '200px'}
                 height={dim ? dim[1] : '300px'}
             />
-            <p>{elem.name}</p>
+            <p className={style.order}>{elem.name}</p>
         </div>
     )
 }
