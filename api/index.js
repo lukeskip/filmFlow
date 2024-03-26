@@ -1,6 +1,7 @@
 require("dotenv").config();
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
+const saveRoles = require('./src/services/saveRolesToDB.js');
 const saveGenres = require('./src/services/saveGenresToDB.js');
 const saveMovies = require("./src/services/saveMoviesToDB.js");
 const saveUsers = require("./src/services/saveUsersToDb.js")
@@ -16,6 +17,7 @@ conn.sync({ force: TEST === "TRUE" ?true : false }).then(() => {
   server.listen(3001, async () => {
     try {
       expressListRoutes(router);
+      await saveRoles();
       if (TEST === "TRUE"){
         await saveGenres();
         await saveMovies();

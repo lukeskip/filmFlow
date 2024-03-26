@@ -39,7 +39,11 @@ const Home = () => {
     }
 
     getMovies()
-    getGenres()
+    getGenres();
+
+    if(user){
+      console.log(user);
+    }
   },[]);
 
   return (
