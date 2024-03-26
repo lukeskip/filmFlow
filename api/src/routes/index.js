@@ -3,6 +3,7 @@ const {movies} = require('./api')
 const moviesRouter = require('./moviesRouter')
 const genresRouter = require('./genresRouter')
 const reviewsRouter = require('./reviewsRouter')
+const cartRouter = require('./cartRouter')
 
 const router = Router()
 
@@ -15,6 +16,7 @@ router.get('/', async (req, res)=>{
 router.use('/movies',moviesRouter);
 router.use('/genres',genresRouter);
 router.use('/reviews',reviewsRouter);
+router.use('/cart', cartRouter)
 
 
 module.exports = router
