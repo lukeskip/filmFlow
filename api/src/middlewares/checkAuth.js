@@ -9,7 +9,7 @@ module.exports = async (req,res,next)=>{
     
     if(!user) return res.status(403).json({status:false,message:"El usuario no existe"});
 
-    req.user = user;
+    req.user = user.toJSON();
     return next();
 
 

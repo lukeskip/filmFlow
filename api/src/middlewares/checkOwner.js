@@ -9,7 +9,7 @@ module.exports = async (req,res,next)=>{
     const role = await Role.findOne({where:{role:"admin"}});
     if(!user) return res.status(403).json({status:false,message:"El usuario no existe"});
 
-    req.user = user;
+    req.user = user.toJSON();
     
     if(user.roleId === role.id || user.sid === auth) return next();
 
