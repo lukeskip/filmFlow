@@ -2,7 +2,6 @@
 import axios from "axios";
 import Movies from "../../components/movies/Movies";
 import Carousel from "../../components/carousel/Carousel";
-import Navbar from "../../components/navbar/Navbar"
 import { useState, useEffect } from "react";
 import Filters from "../filters/Filters";
 import { useUser } from '@auth0/nextjs-auth0/client';
@@ -22,12 +21,12 @@ const Home = () => {
       name: 'cargando'
     }]
   )
+
   useEffect(() => {
     const getMovies = async() => {
       let { data } = await axios.get(`${URL}movies`)
       setMovie(data)
     }
-
     const getGenres = async() => {
       let { data } = await axios.get(`${URL}genres`)
       let listGenre = data
@@ -37,35 +36,34 @@ const Home = () => {
       })
       setGenres(data)
     }
-
     getMovies()
     getGenres();
 
-    if(user){
-      console.log(user);
-    }
   },[]);
+
+  useEffect( () => {
+    if(user){
+      console.log("Usuario validado, creando LS");
+      const upUser = async() => {
+        const { data } = await axios.post(`${URL}users`, user)
+        console.log(data);
+
+        //Creación de usuario en el localStorage
+        window.localStorage.setItem(
+          'FilmFlowUsr', JSON.stringify(user)
+        )
+      }
+      upUser()
+    }
+
+  }, [user])
 
   return (
   <div>
     <div className="container">
-
-      {/* TITLE */}
-      <div> 
-        <h1>FilmFlow</h1>
-      </div>
-      {/* SEARCHBAR */}
-      <div>
-        <h2>SearchBar</h2>
-      </div>
       <div>
         {!user ? <a href="/api/auth/login"><button>Login</button></a> : <h2>{user.nickname}</h2>}
       </div>
-
-      <nav >
-        <Navbar/>
-      </nav>
-
     </div>
     <Carousel movie={movie} dim={['900px', '400px']}/>
     <div>
