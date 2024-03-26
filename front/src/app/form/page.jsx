@@ -73,12 +73,13 @@ const MovieForm = () => {
         posterFile: posterDataURL,
         trailerFile: trailerDataURL,
         movieFile: movieDataURL,
+        auth:"3333"
       };
-      console.log(data)
+      
   
       // Envía los datos al backend
-      const movieResponse = axios.post(`${URL}movies`, data);
-      
+      const movieResponse = await axios.post(`${URL}movies`, data);
+      console.log(movieResponse.data);
       setSuccessMessage('Formulario enviado correctamente');
       setErrorMessage('');
       console.log('Server response:', movieResponse);
