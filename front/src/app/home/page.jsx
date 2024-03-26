@@ -72,9 +72,6 @@ const Home = () => {
       <Movies movie={movie} />
       <h5>Ver más..</h5>
     </div>
-    <div>
-      <h4>FOOTER</h4>
-    </div>
   </div>
   );
 }
