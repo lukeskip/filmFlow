@@ -1,0 +1,25 @@
+.detail-content {
+    display: grid;
+
+  }
+  
+  .info-container {
+    grid-column: 1/2;
+    width: 700px;
+  }
+  
+  .media-container {
+    grid-column: 2/2;
+  }
+  .info-container img{
+    width: 250px; /* Cada elemento ocupará la mitad del ancho del contenedor de medios */
+    height: 400px;
+  }
+  .media-container img,
+  .media-container video {
+    width: 250px; /* Cada elemento ocupará la mitad del ancho del contenedor de medios */
+    height: 400px;
+  }
+  
+  /* Ajusta los estilos según tus preferencias */
+  
