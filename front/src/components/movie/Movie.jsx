@@ -23,7 +23,7 @@ const Movie = ({ elem, dim }) => {
                 </div>
 
             </Link>
-            <div><Buy movie = {elem}></Buy></div>
+            <div><Buy /*Aqui se le pasa el id del usuario */></Buy></div>
 
         </div>
     )

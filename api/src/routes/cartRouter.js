@@ -7,7 +7,7 @@ const postPurchaseHandler = require("../handlers/postPurchaseHandler");
 
 const cartRouter = Router();
 
-cartRouter.get('/', checkAuth, getCartHandler)
+cartRouter.get('/:auth', checkAuth, getCartHandler)
 cartRouter.post('/', checkAuth, postCartHandler)
 cartRouter.post('/buy', checkAuth, postPurchaseHandler)
 cartRouter.delete('/:movieId', checkAuth, deleteCartHandler)
