@@ -1,7 +1,7 @@
 
 'use client'
 import Movie from "../movie/Movie";
-import style from "./Movies.module.css";
+import style from "./Movies.module.scss";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -41,7 +41,7 @@ const Movies = ({movie}) => {
             movie.map((elem, index) => {
                 if(index >= elemIndex.bottom && index <= elemIndex.top){
                     return (<Link 
-                        className={style.circle}
+                        className={style.link}
                         href={`/`}
                         key={elem.id}>                                     
                             <Movie elem={elem}/>

@@ -1,7 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Movies from "../components/movies/Movies";
 import Carousel from "../components/carousel/Carousel";
 import { useState, useEffect } from "react";
 import { useUser } from '@auth0/nextjs-auth0/client';
@@ -32,7 +31,9 @@ const Landing = () => {
     getMovies()
   },[]);
 
-  home()
+  useEffect( () => {
+    home()
+  })
 
   if(error){
     return (
@@ -40,21 +41,19 @@ const Landing = () => {
     )
   }
 
-  if(isLoading){
-    return (
-      <div>Loading...</div>
-    )
-  }
+  // if(isLoading){
+  //   return (
+  //     <div>Loading...</div>
+  //   )
+  // }
 
   return (
     <div className="container">
       <div>
         <h1>Landing</h1>
           <Carousel movie={movie} dim={['600px', '400px']}/>
-          <button onClick={()=>router.push('/home')}>Ingresar</button>
       </div>
       <div>
-        <p>Reemplazar esta linea por COMP LOGIN</p>
         {!user ? <a href="/api/auth/login"><button>Login</button></a> : ""}
         
       </div>
