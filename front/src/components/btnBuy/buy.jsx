@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Button from '../button/Button'
 
 export default function Buy({movie}) {
 
@@ -28,8 +29,7 @@ export default function Buy({movie}) {
 
   return (
     <div>
-      <span>$25</span>
-      <button onClick={() => {buy(movie)}}>buy</button>
+      <Button callback={() => buy(movie)} label="$25" emoji="🤑"/>
     </div>
   );
 }

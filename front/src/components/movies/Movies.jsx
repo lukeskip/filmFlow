@@ -41,7 +41,7 @@ const Movies = ({movie}) => {
             movie.map((elem, index) => {
                 if(index >= elemIndex.bottom && index <= elemIndex.top){
                     return (<Link 
-                        className={style.circle}
+                        className={style.link}
                         href={`/`}
                         key={elem.id}>                                     
                             <Movie elem={elem}/>

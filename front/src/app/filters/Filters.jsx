@@ -1,5 +1,5 @@
 'use client'
-import Movie from "../../components/movie/Movie";
+import Genre from "../../components/genre/Genre";
 import Link from "next/link";
 import style from "./Filters.module.scss"
 import { useState } from "react";
@@ -42,8 +42,10 @@ const FiltersView = ({genres}) => {
                         return (<Link 
                             className={style.circle}
                             href={`/filters/${elem.name}`}
-                            key={elem.id}>                                     
-                                <Movie elem={elem} dim={['0px', '0px']}/>
+                            key={elem.id}>     
+                                  <>
+                                    <Genre genre={elem}/>
+                                  </>                               
                         </Link>)
                 }})
             }
