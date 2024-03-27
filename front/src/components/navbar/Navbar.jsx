@@ -11,7 +11,7 @@ const Nav = ()=> {
         <nav>
             <ul className={styles.navList}>
                 <li>
-                    <Link href ='#'>
+                    <Link href ='/home'>
                         FilmFlow
                     </Link>
                 </li>

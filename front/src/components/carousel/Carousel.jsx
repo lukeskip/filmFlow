@@ -1,6 +1,6 @@
-import style from "./Carousel.module.css";
+import style from "./Carousel.module.scss";
 import { useEffect, useState } from "react";
-import Movie from "../movie/Movie";
+import CarouselItem from "../carouselItem/CarouselItem";
 
 const Carousel = ({ movie, dim }) => {
     const [movieIndex, setMovieIndex] = useState(0);
@@ -27,10 +27,9 @@ const Carousel = ({ movie, dim }) => {
         <div className="container">
             <div className={style.mainContainer}>                
                 {
-                    <Movie 
+                    <CarouselItem 
                         key={arrMovie[movieIndex].id} 
                         elem={arrMovie[movieIndex]}
-                        dim={dim}
                     />
                 }
                 <div className={style.leftArrow} onClick={() => changeMovie('prev')}>&#10092;</div>

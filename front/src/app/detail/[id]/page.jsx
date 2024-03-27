@@ -31,7 +31,9 @@ const DetailContent = () => {
 
     fetchData();
   }, [id]);
-
+  const capitalize = (string) => {
+    return string.toUpperCase();
+  };
   const toggleMediaType = () => {
     setMediaType(prevMediaType => prevMediaType === 'trailer' ? 'movie' : 'trailer');
   };
@@ -52,7 +54,7 @@ const DetailContent = () => {
     name,
     poster,
     trailer,
-    movie, // Assuming movie refers to the same video URL as trailer
+    movie, 
     director,
     description,
     duration,
@@ -66,37 +68,41 @@ const DetailContent = () => {
       <Link href="/home">
         <button className={style['back-button']}>Ir a home</button>
       </Link>
-      <div className={style['info-container']}>
-        <img src={poster} alt={name + ' poster'} />
-        <h3>{name}</h3>
-        <p>Directed by: {director}</p>
-        <p>Duration: {duration} minutes</p>
-        <p>Country: {country}</p>
-        <p>Description: {description}</p>
-        <p>Genres: {genres.map((genre) => genre.name).join(', ')}</p>
-        <div className={style['info-container']}></div>
-        <h4>Reviews</h4>
-        {reviews.map((review) => (
-          <div key={review.id}>
-            <p>{review.comment}</p>
-            <p>Points: {review.points}</p>
-            <p>User: {review.user.name}</p>
-            <img src={review.user.img} alt={review.user.name} />
+      <div className={style['poster-description-container']}>
+      <div className={style['container-info']}> 
+    <img src={poster} alt={name + ' poster'} className={style['poster-image']} />
+          <div className={style['description-container-info']}>
+          <span className={style['italic-dark']}><h3>{name}</h3></span>
+          <p><span className={style['italic-dark']}>Directed by:</span> {director}</p>
+          <p><span className={style['italic-dark']}>Duration:</span> {duration} minutes</p>
+          <p><span className={style['italic-dark']}>Country:</span> {country}</p>
+          <p><span className={style['italic-dark']}>Description:</span> {description}</p>
+          <p><span className={style['italic-dark']}>Genres:</span> {genres.map((genre) => capitalize(genre.name)).join(', ')}</p>
           </div>
-        ))}
+        </div>
       </div>
       <div className={style['media-container']}>
-      <button onClick={toggleMediaType}>
-        {mediaType === 'trailer' ? 'Ver Película' : 'Ver Trailer'}
-      </button>
+        <button onClick={toggleMediaType}>
+          {mediaType === 'trailer' ? 'Ver Película' : 'Ver Trailer'}
+        </button>
         {mediaType === 'trailer' ? (
           <iframe src={trailer} width="800" height="500" title="Trailer" allowFullScreen />
         ) : (
           <iframe src={movie} width="800" height="500" title="Movie" allowFullScreen />
         )}
       </div>
+      <h4>Reviews</h4>
+      {reviews.map((review) => (
+        <div key={review.id}>
+          <p>{review.comment}</p>
+          <p>Points: {review.points}</p>
+          <p>User: {review.user.name}</p>
+          <img src={review.user.img} alt={review.user.name} />
+        </div>
+      ))}
     </div>
   );
 };
 
 export default DetailContent;
+
