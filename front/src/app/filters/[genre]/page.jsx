@@ -36,7 +36,7 @@ const Filter = ({ params }) => {
 
   useEffect(() => {
     const getGenres = async () => {
-      let { data } = await axios.get(`${URL}genre`);
+      let { data } = await axios.get(`${URL}genres`);
       setGenres(data);
     };
     getGenres();
