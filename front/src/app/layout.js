@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <UserProvider>
-        <body className="wrapper">
+        <body>
           {children}
           </body>
       </UserProvider>
