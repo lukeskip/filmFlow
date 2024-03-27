@@ -94,7 +94,7 @@ const sampleMovies = [
         description: "Lion cub and future king Simba searches for his identity. His eagerness to please others and penchant for testing his boundaries sometimes gets him into trouble.",
         duration: 89,
         country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/2CAL2433ZeIihfX1Hb2139CX0pW.jpg",
+        poster: "https://media.themoviedb.org/t/p/w220_and_h330_face/b0MxU37dNmMwKtoPVYPKOZSIrIn.jpg",
         trailer: "https://res.cloudinary.com/dtn2ewtqg/video/upload/v1711218456/movies/prnsgwdtbqoqsfuwtegy.mp4",
         movie: "https://res.cloudinary.com/dtn2ewtqg/video/upload/v1711218456/movies/prnsgwdtbqoqsfuwtegy.mp4"
     },
@@ -160,7 +160,7 @@ const sampleMovies = [
         description: "A rat who can cook makes an unusual alliance with a young kitchen worker at a famous restaurant.",
         duration: 111,
         country: "United States",
-        poster: "https://image.tmdb.org/t/p/original/y89kFMNYXNKMdlZjR2yg7nQtcQH.jpg",
+        poster: "https://m.media-amazon.com/images/I/71AgTmoFdEL._AC_UF894,1000_QL80_.jpg",
         trailer: "https://res.cloudinary.com/dtn2ewtqg/video/upload/v1711218456/movies/prnsgwdtbqoqsfuwtegy.mp4",
         movie: "https://res.cloudinary.com/dtn2ewtqg/video/upload/v1711218456/movies/prnsgwdtbqoqsfuwtegy.mp4"
     },
@@ -171,7 +171,7 @@ const sampleMovies = [
         description: "Amélie is an innocent and naive girl in Paris with her own sense of justice. She decides to help those around her and, along the way, discovers love.",
         duration: 122,
         country: "France",
-        poster: "https://image.tmdb.org/t/p/original/2TeJfUZMGolfDdW6DKhfIWqvq8y.jpg",
+        poster: "https://image.tmdb.org/t/p/original/mYvUib00miJWxWkiXhy3QnrCj96.jpg",
         trailer: "https://res.cloudinary.com/dtn2ewtqg/video/upload/v1711218456/movies/prnsgwdtbqoqsfuwtegy.mp4",
         movie: "https://res.cloudinary.com/dtn2ewtqg/video/upload/v1711218456/movies/prnsgwdtbqoqsfuwtegy.mp4"
     },

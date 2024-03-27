@@ -155,18 +155,22 @@ const Filter = ({ params }) => {
                     })
                 }
             </div>
-            <div>
-                <input 
-                    type="button" 
-                    value="Anterior" 
-                    onClick={() => changePage('prev')}
-                />
-                <label>{pagination.page}</label>
-                <input 
-                    type="button" 
-                    value="Siguiente" 
-                    onClick={() => changePage('next')}
-                />
+            <div className='container'>
+                <div className={style.pagination}>
+                    <input 
+                        className={style.pagination}
+                        type="button" 
+                        value="Anterior" 
+                        onClick={() => changePage('prev')}
+                    />
+                    <label className={style.pagination}>{pagination.page}</label>
+                    <input 
+                        className={style.pagination}
+                        type="button" 
+                        value="Siguiente" 
+                        onClick={() => changePage('next')}
+                    />
+                </div>
             </div>
         </div>
     )
