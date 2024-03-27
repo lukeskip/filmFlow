@@ -1,4 +1,4 @@
-const { Movie, User, Cart } = require('../db')
+const { Movie, Cart } = require('../db')
 
 module.exports = async (req) => {
     try {
