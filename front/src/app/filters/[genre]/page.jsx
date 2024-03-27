@@ -159,7 +159,7 @@ const Filter = ({ params }) => {
             index >= (pagination.page - 1) * pagination.step &&
             index <= pagination.page * pagination.step - 1
           ) {
-            return <Movie elem={elem} />;
+            return <Movie key={elem.id} elem={elem} />;
           }
         })}
       </div>
