@@ -2,16 +2,15 @@ const postCart = require("../controllers/postCart")
 
 module.exports = async (req, res) => {
     try {
-        const { movieId, userId } = req.body
 
-        const data = await postCart(movieId, userId)
+        const data = await postCart(req)
 
         if(data.message){
-            res.status(404).json(data.message)
+            return res.status(404).json(data.message)
         } 
 
-        res.status(200).json({message : 'Pelicula añadida al carrito con exito'})
+        return res.status(200).json({message : 'Pelicula añadida al carrito con exito'})
     } catch (error) {
-        res.status(500).json(error)
+        return res.status(500).json(error)
     }
 } 
