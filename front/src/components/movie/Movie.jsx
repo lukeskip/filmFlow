@@ -1,6 +1,6 @@
 import style from "./Movie.module.scss"
 import Buy from '../btnBuy/buy'
-import Link from "next/link"
+import Link from "next/link";
 
 const Movie = ({ elem, dim }) => {
     const title = (title)=>{
@@ -10,6 +10,7 @@ const Movie = ({ elem, dim }) => {
     }
     return(
         <div key={elem.id} className={style.card} >
+         <Link href={`/`} key={elem.id}>
            <div>
             <Link href={`/detail/${elem.id}`}>
                 <img 
@@ -21,6 +22,7 @@ const Movie = ({ elem, dim }) => {
            </div>
 
             <div className={style.order}>{title(elem.name) }</div>
+            </Link>
             <div><Buy movie = {elem}></Buy></div>
 
         </div>

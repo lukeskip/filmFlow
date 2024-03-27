@@ -17,7 +17,6 @@ export default function Buy({movie}) {
         },
         unit_amount: 2500,
       },
-      metadata: {movieId: movie.id},
       quantity: 1,
     }]);
     window.location = data.url
@@ -28,7 +27,7 @@ export default function Buy({movie}) {
 
   return (
     <div>
-      <Button callback={() => buy(movie)} label="$25" emoji="🤑"/>
+      <Button callback={() => buy(movie)} label="Buy" emoji="🤑"/>
     </div>
   );
 }

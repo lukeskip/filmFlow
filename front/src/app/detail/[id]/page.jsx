@@ -12,7 +12,6 @@ const DetailContent = () => {
   const [error, setError] = useState(null);
   const [mediaType, setMediaType] = useState('trailer');
   const URL = process.env.NEXT_PUBLIC_URL;
- 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +31,7 @@ const DetailContent = () => {
 
     fetchData();
   }, [id]);
-  
+
   const addToCart = async () => {
     try {
       await axios.post(`${URL}cart`, {
@@ -45,6 +44,7 @@ const DetailContent = () => {
       alert('An error occurred while adding the movie to the cart.');
     }
   };
+
   const capitalize = (string) => {
     return string.toUpperCase();
   };
@@ -84,16 +84,16 @@ const DetailContent = () => {
         <button className={style['back-button']}>Ir a home</button>
       </Link>
       <div className={style['poster-description-container']}>
-      <div className={style['container-info']}> 
-    <img src={poster} alt={name + ' poster'} className={style['poster-image']} />
+        <div className={style['container-info']}> 
+          <img src={poster} alt={name + ' poster'} className={style['poster-image']} />
           <div className={style['description-container-info']}>
-          <span className={style['italic-dark']}><h3>{name}</h3></span>
-          <p><span className={style['italic-dark']}>Directed by:</span> {director}</p>
-          <p><span className={style['italic-dark']}>Duration:</span> {duration} minutes</p>
-          <p><span className={style['italic-dark']}>Country:</span> {country}</p>
-          <p><span className={style['italic-dark']}>Description:</span> {description}</p>
-          <p><span className={style['italic-dark']}>Genres:</span> {genres.map((genre) => capitalize(genre.name)).join(', ')}</p>
-          <button className={style['back-button']} onClick={addToCart}>Agregar al carrito</button>
+            <span className={style['italic-dark']}><h3>{name}</h3></span>
+            <p><span className={style['italic-dark']}>Directed by:</span> {director}</p>
+            <p><span className={style['italic-dark']}>Duration:</span> {duration} minutes</p>
+            <p><span className={style['italic-dark']}>Country:</span> {country}</p>
+            <p><span className={style['italic-dark']}>Description:</span> {description}</p>
+            <p><span className={style['italic-dark']}>Genres:</span> {genres.map((genre) => capitalize(genre.name)).join(', ')}</p>
+            <button className={style['back-button']} onClick={addToCart}>Agregar al carrito</button>
           </div>
         </div>
       </div>
@@ -109,11 +109,17 @@ const DetailContent = () => {
       </div>
       <h4>Reviews</h4>
       {reviews.map((review) => (
-        <div key={review.id}>
-          <p>{review.comment}</p>
-          <p>Points: {review.points}</p>
-          <p>User: {review.user.name}</p>
-          <img src={review.user.img} alt={review.user.name} />
+        <div key={review.id} className={style['review-container']}>
+          <img src={review.user.picture} alt={review.user.name} className={style['user-picture']} />
+          <div className={style['review-content']}>
+            <div className={style['star-rating']} data-rating={review.points}>
+            <span className={style['italic-dark']}><p>{review.user.name}</p></span>
+              {[...Array(review.points)].map((_, index) => (
+                <span key={index} className={style['filled']}>&#9733;</span>
+              ))}
+            </div>
+            <p>{review.comment}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -121,4 +127,5 @@ const DetailContent = () => {
 };
 
 export default DetailContent;
+
 
