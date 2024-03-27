@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#folders
+/src/utils
+/src/components/login
+/src/components/register
