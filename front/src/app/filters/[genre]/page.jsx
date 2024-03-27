@@ -2,9 +2,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Movie from "../../../components/movie/Movie";
-import Link from "next/link";
 import style from "./page.module.css";
-import Buy from "@/components/btnBuy/buy";
+
 
 const Filter = ({ params }) => {
   const URL = process.env.NEXT_PUBLIC_URL;
@@ -160,13 +159,7 @@ const Filter = ({ params }) => {
             index >= (pagination.page - 1) * pagination.step &&
             index <= pagination.page * pagination.step - 1
           ) {
-            return (
-              <>
-                {/* <Link href={`/`} key={elem.id}> */}
-                <Movie elem={elem} />
-                {/* </Link> */}
-              </>
-            );
+            return <Movie elem={elem} />;
           }
         })}
       </div>
