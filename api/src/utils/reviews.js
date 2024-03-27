@@ -110,7 +110,7 @@ module.exports = [
     {
         "userId": 4,
         "movieId": 1,
-        "comment": "Masomenos",
-        "points": 3
+        "comment": "Pulp Fiction te sumerge en un submundo criminal de Los Ángeles, donde sicarios, un boxeador y la esposa de un gángster se cruzan en una trama llena de violencia, humor negro y referencias a la cultura pop. Diálogos memorables, personajes icónicos y una estructura narrativa no lineal te mantienen en suspenso. La violencia puede ser excesiva para algunos y la trama un poco confusa al principio, pero si buscas una película llena de acción, personajes memorables y diálogos ingeniosos, Pulp Fiction es para ti. Véala en su idioma original para disfrutar al máximo",
+        "points": 4
     },
 ]
