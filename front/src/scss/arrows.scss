@@ -1,3 +1,4 @@
+@import "../scss/variables.scss";
 .leftArrow,
 .rightArrow {
   position: absolute;
@@ -9,7 +10,7 @@
   cursor: pointer;
   opacity: 0.7;
   width: 30px;
-  background-color: white;
+  background-color: $neutralLight;
 }
 
 /* Arrows */
