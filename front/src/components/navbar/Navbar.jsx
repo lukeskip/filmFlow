@@ -6,17 +6,25 @@ import logoimg from '../../img/logo-white-expanded.png';
 import userpic from '../../img/userpic.png'
 import cart from '../../img/shopping-cart.png'
 import { UseUser, useUser } from '@auth0/nextjs-auth0/client'
+import Button from '../../components/button/Button'
+import { useRouter } from 'next/navigation';
 
 const Nav = (props)=> {
 
     const {data} = props;
-    const {user} = useUser()
+    const {user} = useUser();
+    const router = useRouter();
 
     const [showDropdown, setShowDropdown] = useState(false);
+    const [search,setSearch] = useState("");
 
     const handleAccountClick = () => {
       setShowDropdown(!showDropdown);
     };
+
+    const handleSubmit = ()=>{
+        router.push(`/filters/search?s=${search}`); // Utiliza router.push para navegar a la página especificada por la ruta (path)
+    }
 
     return(
         <nav className={styles.nav}>
@@ -37,7 +45,9 @@ const Nav = (props)=> {
 
                     <div className={styles.searchBar}>
                     <li >
-                            <input type="text" placeholder="Search" />
+                        <input type="text" placeholder="Search" value={search} onChange={(event)=>setSearch(event.target.value)}/>
+                        <span className={styles.searchButton} onClick={handleSubmit}>🔎</span>
+                        
                     </li> 
                     </div>
                     

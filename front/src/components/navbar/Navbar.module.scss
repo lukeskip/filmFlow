@@ -3,7 +3,11 @@
   background-color: $mainColor;
   .logo {
     width: 130px;
-    height:auto;
+    height: auto;
+  }
+  .searchButton {
+    display: inline-block;
+    margin-left: 10px;
   }
 }
 .navList {
