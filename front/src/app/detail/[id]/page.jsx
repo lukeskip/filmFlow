@@ -12,6 +12,7 @@ const DetailContent = () => {
   const [error, setError] = useState(null);
   const [mediaType, setMediaType] = useState('trailer');
   const URL = process.env.NEXT_PUBLIC_URL;
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,9 +32,23 @@ const DetailContent = () => {
 
     fetchData();
   }, [id]);
+  
+  const addToCart = async () => {
+    try {
+      await axios.post(`${URL}cart`, {
+        movieId: id,
+        auth: '3333'
+      });
+      alert('Movie added to cart successfully!');
+    } catch (error) {
+      console.error('Error adding movie to cart:', error);
+      alert('An error occurred while adding the movie to the cart.');
+    }
+  };
   const capitalize = (string) => {
     return string.toUpperCase();
   };
+
   const toggleMediaType = () => {
     setMediaType(prevMediaType => prevMediaType === 'trailer' ? 'movie' : 'trailer');
   };
@@ -78,6 +93,7 @@ const DetailContent = () => {
           <p><span className={style['italic-dark']}>Country:</span> {country}</p>
           <p><span className={style['italic-dark']}>Description:</span> {description}</p>
           <p><span className={style['italic-dark']}>Genres:</span> {genres.map((genre) => capitalize(genre.name)).join(', ')}</p>
+          <button className={style['back-button']} onClick={addToCart}>Agregar al carrito</button>
           </div>
         </div>
       </div>

@@ -49,11 +49,11 @@
   border: 1px solid #ddd; /* Añade el borde al info-container */
   border-radius: 5px; /* Añade el borde redondeado */
   padding: 20px; /* Agrega espacio alrededor del contenido */
-
 }
 
 .description-container-info h3{
   font-size: 25px;
+  margin-top: 5px;
 }
 .description-container-info p {
   margin-bottom: 10px;
