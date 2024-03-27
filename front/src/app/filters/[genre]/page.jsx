@@ -4,12 +4,11 @@ import { useState, useEffect } from "react";
 import Movie from "../../../components/movie/Movie";
 import style from "./page.module.css";
 
-
 const Filter = ({ params }) => {
   const URL = process.env.NEXT_PUBLIC_URL;
   let URL2 = URL;
   params.genre !== "Search"
-    ? (URL2 = URL2 + `movies?search=&genres=${params.genre}`)
+    ? (URL2 = URL2 + `movies?search=&genre=${params.genre}`)
     : (URL2 = URL + `movies?`);
   const [urlFilter, setUrlFilter] = useState([URL2]);
   const [movies, setMovies] = useState([
@@ -37,7 +36,7 @@ const Filter = ({ params }) => {
 
   useEffect(() => {
     const getGenres = async () => {
-      let { data } = await axios.get(`${URL}genres`);
+      let { data } = await axios.get(`${URL}genre`);
       setGenres(data);
     };
     getGenres();
