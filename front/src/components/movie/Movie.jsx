@@ -10,7 +10,7 @@ const Movie = ({ elem, dim }) => {
     }
     return(
         <div key={elem.id} className={style.card} >
-            <Link href={`/`} key={elem.id}>
+            <Link href={`/detail/${elem.id}`} key={elem.id}>
                 <div className={style.image}>
                     <img 
                         src={elem.poster}
