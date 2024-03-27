@@ -3,7 +3,9 @@ import Buy from '../btnBuy/buy'
 
 const Movie = ({ elem, dim }) => {
     const title = (title)=>{
-        return title.length >=15 ? title.slice(0,15)+"...":title;
+        if(title){
+            return title.length >=15 ? title.slice(0,15)+"...":title;
+        }
     }
     return(
         <div key={elem.id} className={style.card} >

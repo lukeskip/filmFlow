@@ -29,7 +29,7 @@ export default function Buy({movie}) {
 
   return (
     <div>
-      <Button callback={() => {buy(movie)}} label="$25" emoji="🤑"/>
+      <Button callback={() => buy(movie)} label="$25" emoji="🤑"/>
     </div>
   );
 }
