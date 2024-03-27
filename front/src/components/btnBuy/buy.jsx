@@ -5,9 +5,8 @@ import Button from '../button/Button'
 export default function Buy({movie}) {
 
   async function buy(movie) {
-    console.log(movie)
     try {
-      const {data} = await axios.post("http://localhost:3001/checkout", {
+      const {data} = await axios.post("http://localhost:3001/checkout", [{//Enviar un array con el carrito de compra
       price_data: {
         currency: "usd",
         product_data: {
@@ -19,8 +18,7 @@ export default function Buy({movie}) {
         unit_amount: 2500,
       },
       quantity: 1,
-    });
-    console.log(data)
+    }]);
     window.location = data.url
     } catch (error) {
       console.log(error)
@@ -29,7 +27,7 @@ export default function Buy({movie}) {
 
   return (
     <div>
-      <Button callback={() => buy(movie)} label="$25" emoji="🤑"/>
+      <Button callback={() => buy(movie)} label="Buy" emoji="🤑"/>
     </div>
   );
 }

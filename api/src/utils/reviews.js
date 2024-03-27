@@ -64,5 +64,53 @@ module.exports = [
         "movieId": 10,
         "comment": "Masomenos",
         "points": 3
-    }
+    },
+    {
+        "userId": 4,
+        "movieId": 14,
+        "comment": "Masomenos",
+        "points": 3
+    },
+    {
+        "userId": 4,
+        "movieId": 4,
+        "comment": "Masomenos",
+        "points": 3
+    },
+    {
+        "userId": 4,
+        "movieId": 19,
+        "comment": "Masomenos",
+        "points": 3
+    },
+    {
+        "userId": 4,
+        "movieId": 8,
+        "comment": "Masomenos",
+        "points": 3
+    },
+    {
+        "userId": 4,
+        "movieId": 5,
+        "comment": "Masomenos",
+        "points": 3
+    },
+    {
+        "userId": 4,
+        "movieId": 2,
+        "comment": "Masomenos",
+        "points": 3
+    },
+    {
+        "userId": 4,
+        "movieId": 15,
+        "comment": "Masomenos",
+        "points": 3
+    },
+    {
+        "userId": 4,
+        "movieId": 1,
+        "comment": "Masomenos",
+        "points": 3
+    },
 ]
