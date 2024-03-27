@@ -74,6 +74,7 @@ const DetailContent = () => {
         <p>Country: {country}</p>
         <p>Description: {description}</p>
         <p>Genres: {genres.map((genre) => genre.name).join(', ')}</p>
+        <div className={style['info-container']}></div>
         <h4>Reviews</h4>
         {reviews.map((review) => (
           <div key={review.id}>
@@ -85,15 +86,15 @@ const DetailContent = () => {
         ))}
       </div>
       <div className={style['media-container']}>
+      <button onClick={toggleMediaType}>
+        {mediaType === 'trailer' ? 'Ver Película' : 'Ver Trailer'}
+      </button>
         {mediaType === 'trailer' ? (
           <iframe src={trailer} width="800" height="500" title="Trailer" allowFullScreen />
         ) : (
           <iframe src={movie} width="800" height="500" title="Movie" allowFullScreen />
         )}
       </div>
-      <button onClick={toggleMediaType}>
-        {mediaType === 'trailer' ? 'Ver Película' : 'Ver Trailer'}
-      </button>
     </div>
   );
 };
