@@ -1,5 +1,15 @@
 @import "../../scss/variables.scss";
-
+.nav {
+  background-color: $mainColor;
+  .logo {
+    width: 130px;
+    height: auto;
+  }
+  .searchButton {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}
 .navList {
   list-style-type: none;
   padding: 20px 0px 20px 0px;
@@ -9,13 +19,12 @@
   width: 100%;
   position: relative;
   align-items: center;
-  background-color: $mainColor;
+
   font: $mainFont;
 
   li {
     flex: 1;
     margin-right: 20px;
-
   }
 
   a {
@@ -40,38 +49,35 @@
   }
 }
 
-
-
-.toRight{
+.toRight {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  
-  .dropdown{
-  position: absolute;
-  top: 100%; 
-  right: 0;
-  background-color: white; 
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 1000;
-  margin: 0;
 
-  ul{
-    padding-left: 10px;
-  }
-  li{
-    list-style-type: none;
-    font-size: 14px;
-    
-    a{
-      text-decoration: none;
-      text-align: center;
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    margin: 0;
+
+    ul {
+      padding-left: 10px;
+    }
+    li {
+      list-style-type: none;
       font-size: 14px;
+
+      a {
+        text-decoration: none;
+        text-align: center;
+        font-size: 14px;
+      }
     }
   }
 }
-}
 /*/movies/search?*/
-
