@@ -4,7 +4,6 @@ module.exports = async (req, res) => {
     try {
 
         const data = await getCart(req)
-        // console.log(data.movies)
         if (data.status) {
             return res.status(200).json({
                 movies:data.movies,
