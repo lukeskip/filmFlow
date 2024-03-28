@@ -8,9 +8,7 @@ export default function Buy(/*recibir el id del usuario*/) {
     try {
       //En este caso esta hardcodeado al usuario "1111"
       const { data } = await axios.get("http://localhost:3001/cart/1111");
-      console.log(data);
       const movies = await axios.post("http://localhost:3001/checkout", data);
-      console.log(movies.data);
       window.location = movies.data.url;
     } catch (error) {
       console.log(error);

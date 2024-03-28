@@ -22,6 +22,8 @@ module.exports = async (req) => {
                 movies.push(movie);
             }
 
+            movies.sid = user.sid
+            
             return { status: true, movies };
         }
         
