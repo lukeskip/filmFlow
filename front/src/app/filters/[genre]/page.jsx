@@ -3,13 +3,16 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Movie from "../../../components/movie/Movie";
 import style from "./page.module.css";
+import {useSearchParams} from 'next/navigation'
 
 const Filter = ({ params }) => {
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get('s') || "";
   const URL = process.env.NEXT_PUBLIC_URL;
   let URL2 = URL;
   params.genre !== "search"
     ? (URL2 = URL2 + `movies?search=&genre=${params.genre}`)
-    : (URL2 = URL + `movies?`);
+    : (URL2 = URL + `movies?search=${searchQuery}`);
   const [urlFilter, setUrlFilter] = useState([URL2]);
   const [movies, setMovies] = useState([
     {
@@ -24,7 +27,7 @@ const Filter = ({ params }) => {
     },
   ]);
   const [dataFilter, setDataFilter] = useState({
-    search: "",
+    search: searchQuery,
     genre: "",
     orderType: "",
     order: "",
